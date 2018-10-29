@@ -6,6 +6,7 @@ import Herofilter from "./herofilter.jsx";
 class Heroes extends Component {
   state = {
     filter: "all",
+    search: "",
     heroes: [
       {
         id: 1,
@@ -52,21 +53,38 @@ class Heroes extends Component {
 
   onChangeOption = e => {
     this.setState({ filter: e.target.value });
-    console.log(e.target.value);
+  };
+
+  onChangeSearch = e => {
+    this.setState({ search: e.target.value });
   };
 
   render() {
-    var heroesFilter = this.state.heroes;
+    var heroes = this.state.heroes;
+
     if (this.state.filter !== "all") {
-      heroesFilter = this.state.heroes.filter(option => {
-        return option.type === this.state.filter;
+      heroes = this.state.heroes.filter(val => {
+        return val.type === this.state.filter;
+      });
+    }
+
+    if (this.state.search !== "") {
+      heroes = this.state.heroes.filter(val => {
+        return (
+          val.name
+            .toLocaleLowerCase()
+            .indexOf(this.state.search.toLowerCase()) !== -1
+        );
       });
     }
 
     return (
       <div>
-        <Herofilter onChangeOption={this.onChangeOption} />
-        <Herolist heroes={heroesFilter} />
+        <Herofilter
+          onChangeSearch={this.onChangeSearch}
+          onChangeOption={this.onChangeOption}
+        />
+        <Herolist heroes={heroes} />
       </div>
     );
   }
