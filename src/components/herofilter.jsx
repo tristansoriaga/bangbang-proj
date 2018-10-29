@@ -9,8 +9,10 @@ class Herofilter extends Component {
         <div className="filter-options">
           <div className="filter-option">
             <label>Filter</label>
-            <select>
-              <option selected="selected">All</option>
+            <select onChange={this.props.onChangeOption}>
+              <option value="all" selected="selected">
+                All
+              </option>
               {filterProperties.map(val => (
                 <option key={val} value={val}>
                   {val}

@@ -3,8 +3,20 @@
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-gap: 1em;
   grid-auto-rows: 150px;
-  width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
+}
+
+@media only screen and (max-width: 1024px) {
+  .herolist {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .herolist {
+    grid-template-columns: 1fr;
+  }
 }
 
 .hero-box {
