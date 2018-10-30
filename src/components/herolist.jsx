@@ -8,8 +8,15 @@ class Herolist extends Component {
       <FlipMove className="herolist">
         {this.props.heroes.map(val => (
           <div className="hero-box" key={val.id}>
-            <div className="hero-image">{val.name}</div>
-            <div className="hero-caption">{val.type}</div>
+            <div className="hero-image">
+              <img
+                src={val.image}
+                alt={val.name}
+                width="104px"
+                height="100px"
+              />
+            </div>
+            <div className="hero-caption">{val.name}</div>
           </div>
         ))}
       </FlipMove>
