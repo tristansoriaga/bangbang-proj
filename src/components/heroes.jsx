@@ -46,7 +46,7 @@ class Heroes extends Component {
     }
 
     return (
-      <div>
+      <div className="heroes">
         <Herofilter
           onChangeSearch={this.onChangeSearch}
           onChangeOption={this.onChangeOption}
