@@ -3,7 +3,7 @@ import _ from "underscore";
 import "./heroes.css";
 import Herolist from "./herolist.jsx";
 import Herofilter from "./herofilter.jsx";
-import heroData from "./heroes.json";
+import heroData from "./heroes-data.json";
 
 class Heroes extends Component {
   state = {
