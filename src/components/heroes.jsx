@@ -1,8 +1,8 @@
 import React, { Component } from "react";
+import _ from "underscore";
 import "./heroes.css";
 import Herolist from "./herolist.jsx";
 import Herofilter from "./herofilter.jsx";
-
 import heroData from "./heroes.json";
 
 class Heroes extends Component {
@@ -12,6 +12,7 @@ class Heroes extends Component {
     heroes: []
   };
 
+  //eventhandlers
   onChangeOption = e => {
     this.setState({ filter: e.target.value });
   };
@@ -20,12 +21,13 @@ class Heroes extends Component {
     this.setState({ search: e.target.value });
   };
 
+  //lifecycle
   componentDidMount() {
-    this.setState({ heroes: heroData });
+    this.setState({ heroes: heroData.sort() });
   }
 
   render() {
-    var heroes = this.state.heroes;
+    var heroes = _.sortBy(this.state.heroes, "name");
 
     if (this.state.filter !== "all") {
       heroes = heroes.filter(val => {

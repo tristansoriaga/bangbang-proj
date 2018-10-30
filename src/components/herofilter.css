@@ -1,11 +1,15 @@
 .herofilter {
-  padding: 20px 0;
+  padding: 2em 0;
 }
 
 label {
-  padding-right: 0.5em;
+  margin-right: 1em;
 }
 
 select {
   width: 80px;
+}
+
+input {
+  margin-right: 1em;
 }

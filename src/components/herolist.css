@@ -1,6 +1,6 @@
 .herolist {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(10, 1fr);
   grid-gap: 1em;
   grid-auto-rows: 100px;
   max-width: 1200px;
@@ -10,19 +10,32 @@
 
 @media only screen and (max-width: 1024px) {
   .herolist {
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(7, 1fr);
   }
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 768px) {
   .herolist {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .herolist {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media only screen and (max-width: 375px) {
+  .herolist {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 .hero-box {
   display: grid;
   grid-template-rows: 3fr 1fr;
+  min-width: 100px;
 }
 
 .hero-image {
