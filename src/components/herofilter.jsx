@@ -3,7 +3,14 @@ import "./herofilter.css";
 
 class Herofilter extends Component {
   render() {
-    const filterProperties = ["tank", "fighter", "assassin", "mage", "support"];
+    const filterProperties = [
+      "tank",
+      "fighter",
+      "assassin",
+      "mage",
+      "marksman",
+      "support"
+    ];
     return (
       <div className="herofilter">
         <div className="filter-options">

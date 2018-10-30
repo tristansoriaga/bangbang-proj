@@ -1,0 +1,347 @@
+[
+  {
+    "id": 1,
+    "name": "akai",
+    "type": "tank"
+  },
+  {
+    "id": 2,
+    "name": "aldous",
+    "type": "fighter"
+  },
+  {
+    "id": 3,
+    "name": "alice",
+    "type": "mage"
+  },
+  {
+    "id": 4,
+    "name": "alpha",
+    "type": "fighter"
+  },
+  {
+    "id": 5,
+    "name": "alucard",
+    "type": "fighter"
+  },
+  {
+    "id": 6,
+    "name": "angela",
+    "type": "support"
+  },
+  {
+    "id": 7,
+    "name": "argus",
+    "type": "fighter"
+  },
+  {
+    "id": 8,
+    "name": "aurora",
+    "type": "mage"
+  },
+  {
+    "id": 9,
+    "name": "balmond",
+    "type": "fighter"
+  },
+  {
+    "id": 10,
+    "name": "bane",
+    "type": "fighter"
+  },
+    {
+    "id": 11,
+    "name": "belirick",
+    "type": "tank"
+  },
+  {
+    "id": 12,
+    "name": "bruno",
+    "type": "marksman"
+  },
+  {
+    "id": 13,
+    "name": "chang'e",
+    "type": "mage"
+  },
+  {
+    "id": 14,
+    "name": "chou",
+    "type": "fighter"
+  },
+  {
+    "id": 15,
+    "name": "claude",
+    "type": "marksman"
+  },
+  {
+    "id": 16,
+    "name": "clint",
+    "type": "marksman"
+  },
+  {
+    "id": 17,
+    "name": "cyclops",
+    "type": "mage"
+  },
+  {
+    "id": 18,
+    "name": "diggie",
+    "type": "support"
+  },
+  {
+    "id": 19,
+    "name": "estes",
+    "type": "support"
+  },
+  {
+    "id": 20,
+    "name": "eudora",
+    "type": "mage"
+  },
+  {
+    "id": 21,
+    "name": "fanny",
+    "type": "assassin"
+  },
+  {
+    "id": 22,
+    "name": "franco",
+    "type": "tank"
+  },
+  {
+    "id": 23,
+    "name": "freya",
+    "type": "fighter"
+  },
+  {
+    "id": 24,
+    "name": "gatotkaca",
+    "type": "tank"
+  },
+  {
+    "id": 25,
+    "name": "gord",
+    "type": "mage"
+  },
+  {
+    "id": 26,
+    "name": "grock",
+    "type": "tank"
+  },
+  {
+    "id": 27,
+    "name": "gusion",
+    "type": "assassin"
+  },
+  {
+    "id": 28,
+    "name": "hanabi",
+    "type": "marksman"
+  },
+  {
+    "id": 29,
+    "name": "harley",
+    "type": "assassin"
+  },
+  {
+    "id": 30,
+    "name": "hayabusa",
+    "type": "assassin"
+  },
+  {
+    "id": 31,
+    "name": "helcurt",
+    "type": "assassin"
+  },
+  {
+    "id": 32,
+    "name": "hilda",
+    "type": "fighter"
+  },
+  {
+    "id": 33,
+    "name": "hylos",
+    "type": "tank"
+  },
+  {
+    "id": 34,
+    "name": "irithel",
+    "type": "marksman"
+  },
+  {
+    "id": 35,
+    "name": "jawhead",
+    "type": "fighter"
+  },
+  {
+    "id": 36,
+    "name": "johnson",
+    "type": "tank"
+  },
+  {
+    "id": 37,
+    "name": "kagura",
+    "type": "mage"
+  },
+  {
+    "id": 38,
+    "name": "kaja",
+    "type": "support"
+  },
+  {
+    "id": 39,
+    "name": "karina",
+    "type": "assassin"
+  },
+  {
+    "id": 40,
+    "name": "karrie",
+    "type": "marksman"
+  },
+  {
+    "id": 41,
+    "name": "lancelot",
+    "type": "assassin"
+  },
+  {
+    "id": 42,
+    "name": "lapu-lapu",
+    "type": "fighter"
+  },
+  {
+    "id": 43,
+    "name": "layla",
+    "type": "marksman"
+  },
+  {
+    "id": 44,
+    "name": "leomord",
+    "type": "fighter"
+  },
+  {
+    "id": 45,
+    "name": "lesley",
+    "type": "marksman"
+  },
+  {
+    "id": 46,
+    "name": "lolita",
+    "type": "tank"
+  },
+  {
+    "id": 47,
+    "name": "lunox",
+    "type": "mage"
+  },
+  {
+    "id": 48,
+    "name": "martis",
+    "type": "fighter"
+  },
+  {
+    "id": 49,
+    "name": "minotaur",
+    "type": "tank"
+  },
+  {
+    "id": 50,
+    "name": "miya",
+    "type": "marksman"
+  },
+  {
+    "id": 51,
+    "name": "moskov",
+    "type": "marksman"
+  },
+  {
+    "id": 52,
+    "name": "nana",
+    "type": "support"
+  },
+  {
+    "id": 53,
+    "name": "natalia",
+    "type": "assassin"
+  },
+  {
+    "id": 54,
+    "name": "odette",
+    "type": "mage"
+  },
+  {
+    "id": 55,
+    "name": "pharsa",
+    "type": "mage"
+  },
+  {
+    "id": 56,
+    "name": "rafaela",
+    "type": "support"
+  },
+  {
+    "id": 57,
+    "name": "roger",
+    "type": "fighter"
+  },
+  {
+    "id": 58,
+    "name": "ruby",
+    "type": "fighter"
+  },
+  {
+    "id": 59,
+    "name": "saber",
+    "type": "assassin"
+  },
+  {
+    "id": 60,
+    "name": "selena",
+    "type": "assassin"
+  },
+  {
+    "id": 61,
+    "name": "sun",
+    "type": "fighter"
+  },
+  {
+    "id": 62,
+    "name": "thalmuz",
+    "type": "fighter"
+  },
+  {
+    "id": 63,
+    "name": "tigreal",
+    "type": "tank"
+  },
+  {
+    "id": 64,
+    "name": "uranus",
+    "type": "tank"
+  },
+  {
+    "id": 65,
+    "name": "valir",
+    "type": "mage"
+  },
+  {
+    "id": 66,
+    "name": "vexana",
+    "type": "mage"
+  },
+  {
+    "id": 67,
+    "name": "yi sun-shin",
+    "type": "marksman"
+  },
+  {
+    "id": 68,
+    "name": "zhask",
+    "type": "mage"
+  },
+  {
+    "id": 69,
+    "name": "zilong",
+    "type": "fighter"
+  }
+]

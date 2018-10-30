@@ -3,52 +3,13 @@ import "./heroes.css";
 import Herolist from "./herolist.jsx";
 import Herofilter from "./herofilter.jsx";
 
+import heroData from "./heroes.json";
+
 class Heroes extends Component {
   state = {
     filter: "all",
     search: "",
-    heroes: [
-      {
-        id: 1,
-        name: "akai",
-        type: "tank"
-      },
-      {
-        id: 2,
-        name: "aldous",
-        type: "fighter"
-      },
-      {
-        id: 3,
-        name: "alice",
-        type: "mage"
-      },
-      {
-        id: 4,
-        name: "alpha",
-        type: "fighter"
-      },
-      {
-        id: 5,
-        name: "alucard",
-        type: "fighter"
-      },
-      {
-        id: 6,
-        name: "angela",
-        type: "support"
-      },
-      {
-        id: 7,
-        name: "argus",
-        type: "fighter"
-      },
-      {
-        id: 8,
-        name: "aurora",
-        type: "mage"
-      }
-    ]
+    heroes: []
   };
 
   onChangeOption = e => {
@@ -59,17 +20,21 @@ class Heroes extends Component {
     this.setState({ search: e.target.value });
   };
 
+  componentDidMount() {
+    this.setState({ heroes: heroData });
+  }
+
   render() {
     var heroes = this.state.heroes;
 
     if (this.state.filter !== "all") {
-      heroes = this.state.heroes.filter(val => {
+      heroes = heroes.filter(val => {
         return val.type === this.state.filter;
       });
     }
 
     if (this.state.search !== "") {
-      heroes = this.state.heroes.filter(val => {
+      heroes = heroes.filter(val => {
         return (
           val.name
             .toLocaleLowerCase()
