@@ -18,7 +18,7 @@
 
 .hero-box:hover {
   background-color: white;
-  opacity: 0.5;
+  opacity: 0.3;
   cursor: pointer;
   display: block;
 }
@@ -38,8 +38,9 @@
 .hero-caption {
   color: white;
   display: none;
+  align-self: center;
 }
 
 .herolist > div {
-  border: 1px gray solid;
+  /* border: 1px gray solid; */
 }

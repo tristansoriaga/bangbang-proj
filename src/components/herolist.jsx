@@ -7,10 +7,10 @@ class Herolist extends Component {
   render() {
     return (
       <FlipMove className="herolist">
-        {this.props.heroes.map(val => (
+        {this.props.heroes.map((val, index) => (
           <div
             className="hero-box"
-            key={val.id}
+            key={index}
             onMouseEnter={this.onMouseEnterHandler}
           >
             <div className="hero-image">

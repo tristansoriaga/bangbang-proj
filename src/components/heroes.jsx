@@ -4,12 +4,16 @@ import "./heroes.css";
 import Herolist from "./herolist.jsx";
 import Herofilter from "./herofilter.jsx";
 import heroData from "./heroes-data.json";
-
+import fire from "../firebase";
 class Heroes extends Component {
   state = {
     filter: "all",
     search: "",
-    heroes: []
+    heroes: {
+      name: "",
+      type: "",
+      image: ""
+    }
   };
 
   //eventhandlers
@@ -22,9 +26,48 @@ class Heroes extends Component {
   };
 
   //lifecycle
-  componentDidMount() {
-    this.setState({ heroes: heroData.sort() });
+  // componentDidMount() {
+  //   this.setState({ heroes: heroData.sort() });
+  // }
+
+  componentWillMount() {
+    /* Create reference to messages in Firebase Database */
+
+    const db = fire.firestore();
+    db.settings({
+      timestampsInSnapshots: true
+    });
+    db.collection("heroes")
+      .get()
+      .then(querySnapshot => {
+        querySnapshot.forEach(doc => {
+          //console.log(`${doc.id} => ${doc.data()}`);
+          console.log(doc.data());
+          this.setState({ heroes: doc.data() });
+        });
+      });
   }
+
+  // componentDidMount() {
+  //   const itemsRef = fire.database().ref("heroes");
+  //   console.log(itemsRef);
+  //   itemsRef.on("value", snapshot => {
+  //     let items = snapshot.val();
+
+  //     let newState = [];
+
+  //     for (let item in items) {
+  //       newState.push({
+  //         id: item,
+  //         name: items[item].name,
+  //         type: items[item].type
+  //       });
+  //     }
+  //     this.setState({
+  //       heroes: newState
+  //     });
+  //   });
+  // }
 
   render() {
     var heroes = _.sortBy(this.state.heroes, "name");
