@@ -9,11 +9,7 @@ class Heroes extends Component {
   state = {
     filter: "all",
     search: "",
-    heroes: {
-      name: "",
-      type: "",
-      image: ""
-    }
+    heroes: {}
   };
 
   //eventhandlers
@@ -30,44 +26,30 @@ class Heroes extends Component {
   //   this.setState({ heroes: heroData.sort() });
   // }
 
-  componentWillMount() {
+  componentDidMount() {
     /* Create reference to messages in Firebase Database */
-
     const db = fire.firestore();
     db.settings({
       timestampsInSnapshots: true
     });
+
+    const heroesList = [];
     db.collection("heroes")
       .get()
       .then(querySnapshot => {
         querySnapshot.forEach(doc => {
-          //console.log(`${doc.id} => ${doc.data()}`);
-          console.log(doc.data());
-          this.setState({ heroes: doc.data() });
+          heroesList.push({
+            name: doc.data().name,
+            type: doc.data().type,
+            image: doc.data().image
+          });
+
+          this.setState({
+            heroes: heroesList
+          });
         });
       });
   }
-
-  // componentDidMount() {
-  //   const itemsRef = fire.database().ref("heroes");
-  //   console.log(itemsRef);
-  //   itemsRef.on("value", snapshot => {
-  //     let items = snapshot.val();
-
-  //     let newState = [];
-
-  //     for (let item in items) {
-  //       newState.push({
-  //         id: item,
-  //         name: items[item].name,
-  //         type: items[item].type
-  //       });
-  //     }
-  //     this.setState({
-  //       heroes: newState
-  //     });
-  //   });
-  // }
 
   render() {
     var heroes = _.sortBy(this.state.heroes, "name");
