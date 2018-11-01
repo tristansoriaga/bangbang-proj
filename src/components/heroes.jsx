@@ -39,6 +39,7 @@ class Heroes extends Component {
       .then(querySnapshot => {
         querySnapshot.forEach(doc => {
           heroesList.push({
+            id: doc.id,
             name: doc.data().name,
             type: doc.data().type,
             image: doc.data().image
