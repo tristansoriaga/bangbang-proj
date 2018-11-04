@@ -3,8 +3,8 @@ import _ from "underscore";
 import "./heroes.css";
 import Herolist from "./herolist.jsx";
 import Herofilter from "./herofilter.jsx";
-import heroData from "./heroes-data.json";
 import fire from "../firebase";
+
 class Heroes extends Component {
   state = {
     filter: "all",
