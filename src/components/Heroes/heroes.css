@@ -2,3 +2,8 @@
   /* border: 1px gray solid; */
   padding-bottom: 3em;
 }
+
+.loading {
+  margin: 0 auto;
+  width: 100px;
+}

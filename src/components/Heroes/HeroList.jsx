@@ -3,7 +3,7 @@ import "./herolist.css";
 import FlipMove from "react-flip-move";
 import { NavLink } from "react-router-dom";
 
-class Herolist extends Component {
+class HeroList extends Component {
   onMouseEnterHandler = () => {};
   render() {
     return (
@@ -39,4 +39,4 @@ class Herolist extends Component {
   }
 }
 
-export default Herolist;
+export default HeroList;

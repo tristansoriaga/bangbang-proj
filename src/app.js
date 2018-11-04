@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Heroes from "./components/heroes.jsx";
+import Heroes from "./components/Heroes/Heroes.jsx";
 
 class App extends Component {
   render() {

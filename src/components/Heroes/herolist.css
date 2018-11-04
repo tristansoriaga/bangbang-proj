@@ -27,9 +27,9 @@
   display: block;
 }
 
-.hero-box:hover > .hero-image img {
-  /* transform: scale(1.1); */
-}
+/* .hero-box:hover > .hero-image img {
+ transform: scale(1.1); 
+} */
 
 .hero-image {
   height: 50px;
@@ -41,6 +41,6 @@
   align-self: center;
 }
 
-.herolist > div {
-  /* border: 1px gray solid; */
-}
+/*.herolist > div {
+   border: 1px gray solid; 
+}*/

@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import _ from "underscore";
 import "./heroes.css";
-import Herolist from "./herolist.jsx";
-import Herofilter from "./herofilter.jsx";
-import fire from "../firebase";
+import HeroList from "./HeroList.jsx";
+import HeroFilter from "./HeroFilter.jsx";
+import fire from "../../firebase";
+import { ScaleLoader } from "react-spinners";
 
 class Heroes extends Component {
   state = {
+    isLoading: true,
     filter: "all",
     search: "",
     heroes: {}
@@ -21,13 +23,7 @@ class Heroes extends Component {
     this.setState({ search: e.target.value });
   };
 
-  //lifecycle
-  // componentDidMount() {
-  //   this.setState({ heroes: heroData.sort() });
-  // }
-
   componentDidMount() {
-    /* Create reference to messages in Firebase Database */
     const db = fire.firestore();
     db.settings({
       timestampsInSnapshots: true
@@ -46,7 +42,8 @@ class Heroes extends Component {
           });
 
           this.setState({
-            heroes: heroesList
+            heroes: heroesList,
+            isLoading: false
           });
         });
       });
@@ -73,11 +70,22 @@ class Heroes extends Component {
 
     return (
       <div className="heroes">
-        <Herofilter
+        <HeroFilter
           onChangeSearch={this.onChangeSearch}
           onChangeOption={this.onChangeOption}
         />
-        <Herolist heroes={heroes} />
+        {this.state.isLoading ? (
+          <div className="loading">
+            <ScaleLoader
+              sizeUnit={"px"}
+              size={10}
+              color={"black"}
+              loading={this.state.isLoading}
+            />
+          </div>
+        ) : (
+          <HeroList heroes={heroes} />
+        )}
       </div>
     );
   }

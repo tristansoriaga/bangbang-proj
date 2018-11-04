@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./herofilter.css";
 
-class Herofilter extends Component {
+class HeroFilter extends Component {
   render() {
     const filterProperties = [
       "tank",
@@ -32,4 +32,4 @@ class Herofilter extends Component {
   }
 }
 
-export default Herofilter;
+export default HeroFilter;
