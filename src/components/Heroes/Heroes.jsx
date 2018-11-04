@@ -34,11 +34,12 @@ class Heroes extends Component {
       .get()
       .then(querySnapshot => {
         querySnapshot.forEach(doc => {
+          const { name, type, image } = doc.data();
           heroesList.push({
             id: doc.id,
-            name: doc.data().name,
-            type: doc.data().type,
-            image: doc.data().image
+            name: name,
+            type: type,
+            image: image
           });
 
           this.setState({
@@ -50,8 +51,7 @@ class Heroes extends Component {
   }
 
   render() {
-    var heroes = _.sortBy(this.state.heroes, "name");
-
+    var heroes = this.state.heroes;
     if (this.state.filter !== "all") {
       heroes = heroes.filter(val => {
         return val.type === this.state.filter;
@@ -69,24 +69,24 @@ class Heroes extends Component {
     }
 
     return (
-      <div className="heroes">
-        <HeroFilter
-          onChangeSearch={this.onChangeSearch}
-          onChangeOption={this.onChangeOption}
+      <React.Fragment>
+        <ScaleLoader
+          className="loading"
+          sizeUnit={"px"}
+          size={10}
+          color={"black"}
+          loading={this.state.isLoading}
         />
-        {this.state.isLoading ? (
-          <div className="loading">
-            <ScaleLoader
-              sizeUnit={"px"}
-              size={10}
-              color={"black"}
-              loading={this.state.isLoading}
+        {this.state.isLoading === false && (
+          <div className="heroes">
+            <HeroFilter
+              onChangeSearch={this.onChangeSearch}
+              onChangeOption={this.onChangeOption}
             />
+            <HeroList heroes={_.sortBy(heroes, "name")} />
           </div>
-        ) : (
-          <HeroList heroes={heroes} />
         )}
-      </div>
+      </React.Fragment>
     );
   }
 }

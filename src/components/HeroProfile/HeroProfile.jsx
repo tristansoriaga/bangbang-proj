@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import fire from "../../firebase";
 import HeroSkills from "./HeroSkills";
 import HeroStats from "./HeroStats";
-
+import { ScaleLoader } from "react-spinners";
 class HeroProfile extends Component {
-  state = {};
+  state = { isLoading: true };
 
   componentDidMount() {
     const db = fire.firestore();
@@ -17,15 +17,25 @@ class HeroProfile extends Component {
       .doc("IFmaqpsXxdHxa5VV3cSQ")
       .get()
       .then(querySnapshot => {
+        const {
+          name,
+          type,
+          ability_passive,
+          ability_one,
+          ability_two,
+          ability_three,
+          stats
+        } = querySnapshot.data();
         this.setState({
           id: querySnapshot.id,
-          name: querySnapshot.data().name,
-          type: querySnapshot.data().type,
-          ability_passive: querySnapshot.data().ability_passive,
-          ability_one: querySnapshot.data().ability_one,
-          ability_two: querySnapshot.data().ability_two,
-          ability_three: querySnapshot.data().ability_three,
-          stats: querySnapshot.data().stats
+          name: name,
+          type: type,
+          ability_passive: ability_passive,
+          ability_one: ability_one,
+          ability_two: ability_two,
+          ability_three: ability_three,
+          stats: stats,
+          isLoading: false
         });
       });
   }
@@ -33,7 +43,14 @@ class HeroProfile extends Component {
   render() {
     return (
       <React.Fragment>
-        {this.state.name && (
+        <ScaleLoader
+          className="loading"
+          sizeUnit={"px"}
+          size={10}
+          color={"black"}
+          loading={this.state.isLoading}
+        />
+        {this.state.isLoading === false && (
           <div>
             <h1>{this.state.name.toUpperCase()}</h1>
             <h2>{this.state.type}</h2>
