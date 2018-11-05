@@ -4,7 +4,7 @@ import "./loadingscreen.css";
 
 const LoadingScreen = props => {
   return (
-    <div className="grid-container">
+    <div className="loadingscreen grid-container">
       <div className="grid-item">
         <ScaleLoader
           sizeUnit={"px"}
