@@ -1,0 +1,16 @@
+.herostats {
+  display: grid;
+  min-width: 400px;
+  margin: 0 auto;
+  justify-content: center;
+  grid-gap: 30px;
+  grid-template-columns: auto auto;
+}
+
+.herostats-col {
+  text-align: left;
+}
+
+p {
+  font-size: 1.1em;
+}

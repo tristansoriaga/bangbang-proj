@@ -3,7 +3,6 @@ import "./heroprofile.css";
 import fire from "../../firebase";
 import HeroSkills from "./HeroSkills";
 import HeroStats from "./HeroStats";
-import { ScaleLoader } from "react-spinners";
 import LoadingScreen from "../LoadingScreen/LoadingScreen";
 class HeroProfile extends Component {
   state = { isLoading: true };

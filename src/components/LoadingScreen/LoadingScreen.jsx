@@ -9,7 +9,7 @@ const LoadingScreen = props => {
         <ScaleLoader
           sizeUnit={"px"}
           size={50}
-          color={"black"}
+          color={"white"}
           loading={props.isLoading}
         />
       </div>

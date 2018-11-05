@@ -1,5 +1,6 @@
 import React from "react";
 import "./herolist.css";
+import _ from "underscore.string";
 import FlipMove from "react-flip-move";
 import { NavLink } from "react-router-dom";
 
@@ -13,6 +14,7 @@ const HeroList = props => {
               pathname: `/hero/${val.name}`,
               heroid: val.id
             }}
+            style={{ textDecoration: "none", color: "white" }}
           >
             <div className="hero-box">
               <div className="hero-image">
@@ -24,7 +26,7 @@ const HeroList = props => {
                 />
               </div>
               <div className="hero-caption">
-                <h2>{val.name}</h2>
+                <h2>{_.capitalize(val.name)}</h2>
               </div>
             </div>
           </NavLink>

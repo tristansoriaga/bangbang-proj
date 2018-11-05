@@ -1,20 +1,27 @@
 import React from "react";
+import "./heroskills.css";
+import _ from "underscore.string";
 
 const HeroSkills = props => {
   return props.ability_num === "passive" ? (
     <div className="ability">
-      <h1>Skill Passive</h1>
-      <h2>{props.ability["name"]}</h2>
-      <p>{props.ability["description"]}</p>
-      <p>{props.ability["type"]}</p>
+      <h2>
+        <u>Skill Passive</u>
+      </h2>
+      <h1>{_.capitalize(props.ability["name"])}</h1>
+      <p>{_.capitalize(props.ability["description"])}</p>
     </div>
   ) : (
     <div className="ability">
-      <h1>Skill {props.ability_num}</h1>
-      <h2>{props.ability["name"]}</h2>
-      <p>Description: {props.ability["description"]}</p>
-      <p>Cooldown: {props.ability["cooldown"]}</p>
-      <p>Manacost: {props.ability["manacost"]}</p>
+      <h2>
+        <u>Skill {props.ability_num}</u>
+      </h2>
+      <h1>{_.capitalize(props.ability["name"])}</h1>
+      <p>{_.capitalize(props.ability["description"])}</p>
+      <span style={{ marginRight: "20px" }}>
+        Cooldown: {props.ability["cooldown"]}
+      </span>
+      <span>Manacost: {props.ability["manacost"]}</span>
     </div>
   );
 };

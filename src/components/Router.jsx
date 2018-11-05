@@ -1,9 +1,8 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import App from "../app";
+// import App from "../app";
 import HeroProfile from "./HeroProfile/HeroProfile";
 import Heroes from "./Heroes/Heroes";
-
 const Router = () => (
   <BrowserRouter>
     <Switch>

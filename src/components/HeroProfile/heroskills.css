@@ -1,0 +1,9 @@
+.ability {
+  max-width: 350px;
+  min-width: 150px;
+  margin: 0 auto;
+}
+
+span {
+  font-size: 1.1em;
+}
