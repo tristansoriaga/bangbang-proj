@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import "./heroprofile.css";
 import fire from "../../firebase";
 import HeroSkills from "./HeroSkills";
 import HeroStats from "./HeroStats";
 import { ScaleLoader } from "react-spinners";
+import LoadingScreen from "../LoadingScreen/LoadingScreen";
 class HeroProfile extends Component {
   state = { isLoading: true };
 
@@ -43,15 +45,10 @@ class HeroProfile extends Component {
   render() {
     return (
       <React.Fragment>
-        <ScaleLoader
-          className="loading"
-          sizeUnit={"px"}
-          size={10}
-          color={"black"}
-          loading={this.state.isLoading}
-        />
-        {this.state.isLoading === false && (
-          <div>
+        {this.state.isLoading ? (
+          <LoadingScreen isloading={this.state.isLoading} />
+        ) : (
+          <div className="heroprofile">
             <h1>{this.state.name.toUpperCase()}</h1>
             <h2>{this.state.type}</h2>
             <HeroSkills

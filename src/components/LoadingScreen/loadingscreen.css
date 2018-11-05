@@ -1,0 +1,10 @@
+.grid-container {
+  display: grid;
+  height: 100vh;
+  align-content: center;
+  grid-template-columns: auto;
+}
+.grid-container .grid-item {
+  text-align: center;
+  font-size: 1em;
+}

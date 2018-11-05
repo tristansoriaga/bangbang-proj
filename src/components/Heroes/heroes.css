@@ -2,10 +2,3 @@
   /* border: 1px gray solid; */
   padding-bottom: 3em;
 }
-
-.loading {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-}

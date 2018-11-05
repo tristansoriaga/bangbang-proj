@@ -4,7 +4,7 @@ import "./heroes.css";
 import HeroList from "./HeroList.jsx";
 import HeroFilter from "./HeroFilter.jsx";
 import fire from "../../firebase";
-import { ScaleLoader } from "react-spinners";
+import LoadingScreen from "../LoadingScreen/LoadingScreen";
 
 class Heroes extends Component {
   state = {
@@ -70,14 +70,9 @@ class Heroes extends Component {
 
     return (
       <React.Fragment>
-        <ScaleLoader
-          className="loading"
-          sizeUnit={"px"}
-          size={10}
-          color={"black"}
-          loading={this.state.isLoading}
-        />
-        {this.state.isLoading === false && (
+        {this.state.isLoading ? (
+          <LoadingScreen isloading={this.state.isLoading} />
+        ) : (
           <div className="heroes">
             <HeroFilter
               onChangeSearch={this.onChangeSearch}
