@@ -5,7 +5,7 @@ import HeroSkills from "./HeroSkills";
 import HeroStats from "./HeroStats";
 import LoadingScreen from "../LoadingScreen/LoadingScreen";
 import HeroBackground from "./HeroBackground";
-
+import HeroSkins from "./HeroSkins";
 class HeroProfile extends Component {
   state = { isLoading: true };
 
@@ -29,7 +29,8 @@ class HeroProfile extends Component {
           ability_two,
           ability_three,
           stats,
-          background_story
+          background_story,
+          skins
         } = querySnapshot.data();
         this.setState({
           id: querySnapshot.id,
@@ -42,6 +43,7 @@ class HeroProfile extends Component {
           ability_three,
           stats,
           background_story,
+          skins,
           isLoading: false
         });
       });
@@ -61,6 +63,10 @@ class HeroProfile extends Component {
       grid-template-columns: auto auto auto auto;
       grid-gap: 3em;
       padding: 5em 7em;
+    `;
+    const DivContentSkins = styled.div`
+      background-color: #1a0d06;
+      padding: 5em 2em;
     `;
     const DivContentStats = styled.div`
       background-color: #1a0d06;
@@ -83,10 +89,12 @@ class HeroProfile extends Component {
               <HeroSkills ability_num="2" ability={this.state.ability_two} />
               <HeroSkills ability_num="3" ability={this.state.ability_three} />
             </DivContentAbility>
-
-            <DivContentStats>
+            <DivContentSkins>
+              <HeroSkins skins={this.state.skins} />
+            </DivContentSkins>
+            {/* <DivContentStats>
               <HeroStats stats={this.state.stats} />
-            </DivContentStats>
+            </DivContentStats> */}
           </DivHeroProfile>
         )}
       </React.Fragment>

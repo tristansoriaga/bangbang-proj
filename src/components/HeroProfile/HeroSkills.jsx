@@ -10,7 +10,11 @@ const HeroSkills = props => {
   `;
   return props.ability_num === "passive" ? (
     <DivAbility>
-      <img src={props.ability["image"]} style={{ marginBottom: "10px" }} />
+      <img
+        alt={props.ability["name"]}
+        src={props.ability["image"]}
+        style={{ marginBottom: "10px" }}
+      />
       <p style={{ color: "#c40501", margin: 0 }}>Skill Passive</p>
       <h2 style={{ color: "#000000", margin: 0 }}>
         {_.capitalize(props.ability["name"])}
@@ -20,7 +24,11 @@ const HeroSkills = props => {
     </DivAbility>
   ) : (
     <DivAbility>
-      <img src={props.ability["image"]} style={{ marginBottom: "10px" }} />
+      <img
+        alt={props.ability["name"]}
+        src={props.ability["image"]}
+        style={{ marginBottom: "10px" }}
+      />
       <p style={{ color: "#c40501", margin: 0 }}>Skill {props.ability_num}</p>
       <h2 style={{ color: "#000000", margin: 0 }}>
         {_.capitalize(props.ability["name"])}
