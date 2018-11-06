@@ -14,10 +14,11 @@ class HeroProfile extends Component {
     db.settings({
       timestampsInSnapshots: true
     });
-    // .doc("IFmaqpsXxdHxa5VV3cSQ")
-    //.doc(this.props.location.heroid)
+
     db.collection("heroes")
-      .doc("IFmaqpsXxdHxa5VV3cSQ")
+      .doc(this.props.location.heroid)
+      //.doc("IFmaqpsXxdHxa5VV3cSQ")
+      //.doc("R9jzwNum54aPSgCxOP4c")
       .get()
       .then(querySnapshot => {
         const {
@@ -30,6 +31,7 @@ class HeroProfile extends Component {
           ability_three,
           stats,
           background_story,
+          theme,
           skins
         } = querySnapshot.data();
         this.setState({
@@ -44,6 +46,7 @@ class HeroProfile extends Component {
           stats,
           background_story,
           skins,
+          theme,
           isLoading: false
         });
       });
@@ -89,9 +92,11 @@ class HeroProfile extends Component {
               <HeroSkills ability_num="2" ability={this.state.ability_two} />
               <HeroSkills ability_num="3" ability={this.state.ability_three} />
             </DivContentAbility>
+
             <DivContentSkins>
               <HeroSkins skins={this.state.skins} />
             </DivContentSkins>
+
             {/* <DivContentStats>
               <HeroStats stats={this.state.stats} />
             </DivContentStats> */}
