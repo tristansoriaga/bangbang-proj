@@ -12,7 +12,8 @@ const HeroList = props => {
           <NavLink
             to={{
               pathname: `/hero/${val.name}`,
-              heroid: val.id
+              heroid: val.id,
+              heroname: val.name
             }}
             style={{ textDecoration: "none", color: "white" }}
           >

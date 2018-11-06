@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import fire from "../../firebase";
-import HeroSkills from "./HeroSkills";
-import HeroStats from "./HeroStats";
 import LoadingScreen from "../LoadingScreen/LoadingScreen";
 import HeroBackground from "./HeroBackground";
+import HeroSkills from "./HeroSkills";
 import HeroSkins from "./HeroSkins";
 class HeroProfile extends Component {
   state = { isLoading: true };
@@ -16,9 +15,7 @@ class HeroProfile extends Component {
     });
 
     db.collection("heroes")
-      .doc(this.props.location.heroid)
-      //.doc("IFmaqpsXxdHxa5VV3cSQ")
-      //.doc("R9jzwNum54aPSgCxOP4c")
+      .doc(this.props.match.params.name)
       .get()
       .then(querySnapshot => {
         const {
@@ -96,10 +93,6 @@ class HeroProfile extends Component {
             <DivContentSkins>
               <HeroSkins skins={this.state.skins} />
             </DivContentSkins>
-
-            {/* <DivContentStats>
-              <HeroStats stats={this.state.stats} />
-            </DivContentStats> */}
           </DivHeroProfile>
         )}
       </React.Fragment>
