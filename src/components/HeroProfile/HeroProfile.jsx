@@ -66,11 +66,11 @@ class HeroProfile extends Component {
     `;
     const DivContentSkins = styled.div`
       background-color: #1a0d06;
-      padding: 5em 2em;
+      padding: 5em 7em;
     `;
     const DivContentStats = styled.div`
       background-color: #1a0d06;
-      padding: 5em 2em;
+      padding: 5em 7em;
     `;
     return (
       <React.Fragment>
