@@ -1,28 +1,36 @@
 import React from "react";
-import "./heroskills.css";
 import _ from "underscore.string";
+import styled from "styled-components";
 
 const HeroSkills = props => {
+  const DivAbility = styled.div`
+    max-width: 350px;
+    min-width: 150px;
+    text-align: left;
+  `;
   return props.ability_num === "passive" ? (
-    <div className="ability">
-      <h2>
-        <u>Skill Passive</u>
+    <DivAbility>
+      <img src={props.ability["image"]} style={{ marginBottom: "10px" }} />
+      <p style={{ color: "#c40501", margin: 0 }}>Skill Passive</p>
+      <h2 style={{ color: "#000000", margin: 0 }}>
+        {_.capitalize(props.ability["name"])}
       </h2>
-      <h1>{_.capitalize(props.ability["name"])}</h1>
+      <span>&nbsp;</span>
       <p>{_.capitalize(props.ability["description"])}</p>
-    </div>
+    </DivAbility>
   ) : (
-    <div className="ability">
-      <h2>
-        <u>Skill {props.ability_num}</u>
+    <DivAbility>
+      <img src={props.ability["image"]} style={{ marginBottom: "10px" }} />
+      <p style={{ color: "#c40501", margin: 0 }}>Skill {props.ability_num}</p>
+      <h2 style={{ color: "#000000", margin: 0 }}>
+        {_.capitalize(props.ability["name"])}
       </h2>
-      <h1>{_.capitalize(props.ability["name"])}</h1>
-      <p>{_.capitalize(props.ability["description"])}</p>
       <span style={{ marginRight: "20px" }}>
         Cooldown: {props.ability["cooldown"]}
       </span>
       <span>Manacost: {props.ability["manacost"]}</span>
-    </div>
+      <p>{_.capitalize(props.ability["description"])}</p>
+    </DivAbility>
   );
 };
 

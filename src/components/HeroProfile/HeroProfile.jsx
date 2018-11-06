@@ -1,9 +1,11 @@
 import React, { Component } from "react";
-import "./heroprofile.css";
+import styled from "styled-components";
 import fire from "../../firebase";
 import HeroSkills from "./HeroSkills";
 import HeroStats from "./HeroStats";
 import LoadingScreen from "../LoadingScreen/LoadingScreen";
+import HeroBackground from "./HeroBackground";
+
 class HeroProfile extends Component {
   state = { isLoading: true };
 
@@ -21,44 +23,71 @@ class HeroProfile extends Component {
         const {
           name,
           type,
+          bg_img,
           ability_passive,
           ability_one,
           ability_two,
           ability_three,
-          stats
+          stats,
+          background_story
         } = querySnapshot.data();
         this.setState({
           id: querySnapshot.id,
-          name: name,
-          type: type,
-          ability_passive: ability_passive,
-          ability_one: ability_one,
-          ability_two: ability_two,
-          ability_three: ability_three,
-          stats: stats,
+          name,
+          type,
+          bg_img,
+          ability_passive,
+          ability_one,
+          ability_two,
+          ability_three,
+          stats,
+          background_story,
           isLoading: false
         });
       });
   }
 
   render() {
+    const DivHeroProfile = styled.div`
+      font-family: fantasy;
+      font-weight: bold;
+      font-size: 1em;
+      text-align: center;
+      color: black;
+    `;
+    const DivContentAbility = styled.div`
+      background-color: #edd7a6;
+      display: grid;
+      grid-template-columns: auto auto auto auto;
+      grid-gap: 3em;
+      padding: 5em 7em;
+    `;
+    const DivContentStats = styled.div`
+      background-color: #1a0d06;
+      padding: 5em 2em;
+    `;
     return (
       <React.Fragment>
         {this.state.isLoading ? (
           <LoadingScreen isloading={this.state.isLoading} />
         ) : (
-          <div className="heroprofile">
-            <h1>{this.state.name.toUpperCase()}</h1>
-            <h2>{this.state.type}</h2>
-            <HeroSkills
-              ability_num="passive"
-              ability={this.state.ability_passive}
-            />
-            <HeroSkills ability_num="1" ability={this.state.ability_one} />
-            <HeroSkills ability_num="2" ability={this.state.ability_two} />
-            <HeroSkills ability_num="3" ability={this.state.ability_three} />
-            <HeroStats stats={this.state.stats} />
-          </div>
+          <DivHeroProfile>
+            <HeroBackground state={this.state} />
+
+            <DivContentAbility>
+              <HeroSkills
+                ability_num="passive"
+                ability={this.state.ability_passive}
+              />
+              <HeroSkills ability_num="1" ability={this.state.ability_one} />
+              <HeroSkills ability_num="2" ability={this.state.ability_two} />
+              <HeroSkills ability_num="3" ability={this.state.ability_three} />
+            </DivContentAbility>
+
+            <DivContentStats>
+              <HeroStats stats={this.state.stats} />
+            </DivContentStats>
+          </DivHeroProfile>
         )}
       </React.Fragment>
     );

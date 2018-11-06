@@ -1,6 +1,17 @@
 import React from "react";
-import "./herostats.css";
+import styled from "styled-components";
+
 const HeroStats = props => {
+  const DivHeroStats = styled.div`
+    display: grid;
+    min-width: 400px;
+    margin: 0 auto;
+    justify-content: center;
+    grid-gap: 30px;
+    grid-template-columns: auto auto;
+    color: white;
+  `;
+
   const {
     hp,
     mana,
@@ -17,9 +28,9 @@ const HeroStats = props => {
   } = props.stats;
   return (
     <React.Fragment>
-      <h1>Stats</h1>
-      <div className="herostats">
-        <div className="herostats-col">
+      <h1 style={{ color: "white" }}>Stats</h1>
+      <DivHeroStats>
+        <div style={{ textAlign: "left" }}>
           <p>HP: {hp}</p>
           <p>Mana: {mana}</p>
           <p>Attack Speed: {attack_speed}</p>
@@ -27,7 +38,7 @@ const HeroStats = props => {
           <p>Physical Attack: {physical_attack}</p>
           <p>Magic Power: {magic_power}</p>
         </div>
-        <div className="herostats-col">
+        <div style={{ textAlign: "left" }}>
           <p>HP Regen: {hp_regen}</p>
           <p>Mana Regen: {mana_regen}</p>
           <p>Armor: {armor}</p>
@@ -35,7 +46,7 @@ const HeroStats = props => {
           <p>Basic Attack Crit Rate: {basic_attack_crit_rate}</p>
           <p>Ability Crit Rate: {ability_crit_rate}</p>
         </div>
-      </div>
+      </DivHeroStats>
     </React.Fragment>
   );
 };
