@@ -56,6 +56,7 @@ class HeroProfile extends Component {
       font-size: 1em;
       text-align: center;
       color: black;
+      border: 1px solid #272521;
     `;
     const DivContentAbility = styled.div`
       background-color: #edd7a6;
@@ -65,8 +66,8 @@ class HeroProfile extends Component {
       padding: 5em 7em;
     `;
     const DivContentSkins = styled.div`
-      background-color: #1a0d06;
-      padding: 5em 7em;
+      background-color: #271912;
+      padding: 5em 2em 2em;
     `;
     const DivContentStats = styled.div`
       background-color: #1a0d06;
