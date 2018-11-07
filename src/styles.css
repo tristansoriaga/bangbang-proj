@@ -5,3 +5,7 @@
   text-align: center;
   background-color: #101010;
 }
+
+.hidescroll::-webkit-scrollbar {
+  display: none;
+}

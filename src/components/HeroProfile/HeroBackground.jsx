@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import "../../styles.css";
 
 const HeroBackground = props => {
   const ParaType = styled.p`
@@ -9,7 +10,7 @@ const HeroBackground = props => {
   `;
 
   const DivStory = styled.div`
-    overflow: scroll;
+    overflow-y: scroll;
     height: 270px;
     padding-bottom: 20px;
   `;
@@ -50,7 +51,7 @@ const HeroBackground = props => {
         <H1Name theme={props.state.theme}>
           {props.state.name.toUpperCase()}
         </H1Name>
-        <DivStory>
+        <DivStory className="hidescroll">
           <ParaStory theme={props.state.theme}>
             {props.state.background_story}
           </ParaStory>
