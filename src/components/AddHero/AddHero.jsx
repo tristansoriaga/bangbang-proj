@@ -3,7 +3,7 @@ import styled from "styled-components";
 import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
 import Button from "@material-ui/core/Button";
-
+import fire from "../../firebase";
 class AddHero extends Component {
   state = {
     HeroType: "",
@@ -24,6 +24,38 @@ class AddHero extends Component {
     this.handleChange = prop => event => {
       console.log(prop);
       this.setState({ [prop]: event.target.value });
+    };
+
+    this.handleSubmit = val => {
+      const db = fire.firestore();
+      db.settings({
+        timestampsInSnapshots: true
+      });
+      var docData = {
+        stringExample: "Hello world!",
+        booleanExample: true,
+        numberExample: 3.14159265,
+        dateExample: new Date("December 10, 1815"),
+        arrayExample: [5, true, "hello"],
+        nullExample: null,
+        objectExample: {
+          a: 5,
+          b: {
+            nested: "foo"
+          }
+        }
+      };
+      db.collection("cities")
+        .doc("ABC")
+        .set({
+          docData
+        })
+        .then(function() {
+          console.log("Document successfully written!");
+        })
+        .catch(function(error) {
+          console.error("Error writing document: ", error);
+        });
     };
 
     const DivAddHero = styled.div`
@@ -302,6 +334,7 @@ class AddHero extends Component {
           />
         </div>
         <Button
+          onClick={() => this.handleSubmit("val")}
           style={{ textAlign: "right", margin: 8 }}
           variant="contained"
           color="primary"
