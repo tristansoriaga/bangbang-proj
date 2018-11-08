@@ -1,22 +1,38 @@
 import React from "react";
 import { ScaleLoader } from "react-spinners";
-import "./loadingscreen.css";
+import styled from "styled-components";
+
+const DivLoadingScreen = styled.div`
+  font-family: fantasy;
+  font-weight: bold;
+  font-size: 1em;
+  text-align: center;
+  color: white;
+  display: grid;
+  height: 100vh;
+  align-content: center;
+  grid-template-columns: auto;
+`;
+const DivLoadingScreenItem = styled.div`
+  text-align: center;
+  font-size: 1em;
+`;
 
 const LoadingScreen = props => {
   return (
-    <div className="loadingscreen grid-container">
-      <div className="grid-item">
+    <DivLoadingScreen>
+      <DivLoadingScreenItem>
         <ScaleLoader
           sizeUnit={"px"}
           size={50}
           color={"white"}
           loading={props.isLoading}
         />
-      </div>
-      <div className="grid-item">
+      </DivLoadingScreenItem>
+      <DivLoadingScreenItem>
         <p>Loading</p>
-      </div>
-    </div>
+      </DivLoadingScreenItem>
+    </DivLoadingScreen>
   );
 };
 
