@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import _ from "underscore";
-import "./heroes.css";
 import HeroList from "./HeroList.jsx";
 import HeroFilter from "./HeroFilter.jsx";
 import fire from "../../firebase";

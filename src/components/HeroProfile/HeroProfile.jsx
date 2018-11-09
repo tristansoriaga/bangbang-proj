@@ -69,10 +69,7 @@ class HeroProfile extends Component {
       background-color: #271912;
       padding: 5em 2em 2em;
     `;
-    const DivContentStats = styled.div`
-      background-color: #1a0d06;
-      padding: 5em 7em;
-    `;
+
     return (
       <React.Fragment>
         {this.state.isLoading ? (
