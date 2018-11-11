@@ -7,10 +7,10 @@ class AddSkinsForm extends React.Component {
     skins: [{ name: "" }]
   };
 
-  handleSkinNameChange = idx => evt => {
+  handleSkinNameChange = idx => e => {
     const newskins = this.state.skins.map((skin, sidx) => {
       if (idx !== sidx) return skin;
-      return { ...skin, name: evt.target.value };
+      return { ...skin, name: e.target.value };
     });
 
     this.setState({ skins: newskins });

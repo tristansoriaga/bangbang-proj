@@ -49,7 +49,7 @@ const AddInfoForm = props => {
       <TextField
         id="background_story"
         label="Background Story"
-        style={{ margin: 8 }}
+        style={{ margin: 8, paddingBottom: "20px" }}
         placeholder="Background Story"
         fullWidth
         margin="normal"

@@ -16,11 +16,6 @@ class AddHero extends Component {
     HeroTheme: ""
   };
 
-  // handleChange = prop => event => {
-  //   console.log("asdfasdf");
-  //   this.setState({ [prop]: event.target.value });
-  // };
-
   handleChange = event => {
     console.log(event.target);
     this.setState({ [event.target.name]: event.target.value });
