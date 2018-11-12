@@ -28,6 +28,7 @@ const AddInfoForm = props => {
         fullWidth
         margin="normal"
         variant="outlined"
+        required
       />
       <TextField
         onChange={props.onHandleChange}
@@ -38,6 +39,7 @@ const AddInfoForm = props => {
         fullWidth
         margin="normal"
         variant="outlined"
+        required
       />
       <TextField
         onChange={props.onHandleChange}
@@ -48,6 +50,7 @@ const AddInfoForm = props => {
         fullWidth
         margin="normal"
         variant="outlined"
+        required
       />
       <TextField
         onChange={props.onHandleChange}
@@ -59,8 +62,9 @@ const AddInfoForm = props => {
         margin="normal"
         variant="outlined"
         multiline
+        required
       />
-      <FormControl variant="outlined" style={{ padding: 8 }}>
+      <FormControl required variant="outlined" style={{ padding: 8 }}>
         <InputLabel>Hero Type</InputLabel>
         <Select
           name="type"
@@ -75,7 +79,7 @@ const AddInfoForm = props => {
           ))}
         </Select>
       </FormControl>
-      <FormControl variant="outlined" style={{ padding: 8 }}>
+      <FormControl required variant="outlined" style={{ padding: 8 }}>
         <InputLabel>Hero Theme</InputLabel>
         <Select
           name="theme"

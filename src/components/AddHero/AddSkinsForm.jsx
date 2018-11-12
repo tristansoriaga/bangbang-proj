@@ -17,6 +17,7 @@ const AddSkinsForm = props => {
             variant="outlined"
             value={skin.name}
             onChange={props.onHandleSkinNameChange(idx)}
+            required
           />
           <TextField
             id="skin-image"
@@ -27,6 +28,7 @@ const AddSkinsForm = props => {
             variant="outlined"
             value={skin.image}
             onChange={props.onHandleSkinImageChange(idx)}
+            required
           />
           <Button
             type="button"

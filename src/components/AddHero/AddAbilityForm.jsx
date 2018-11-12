@@ -20,6 +20,7 @@ const AddAbilityForm = props => {
           fullWidth
           margin="normal"
           variant="outlined"
+          required
         />
         <TextField
           onChange={props.onHandleAbilityPassiveChange}
@@ -30,6 +31,7 @@ const AddAbilityForm = props => {
           fullWidth
           margin="normal"
           variant="outlined"
+          required
         />
         <TextField
           onChange={props.onHandleAbilityPassiveChange}
@@ -40,6 +42,7 @@ const AddAbilityForm = props => {
           fullWidth
           margin="normal"
           variant="outlined"
+          required
         />
       </DivAbility>
       <DivAbility>
@@ -53,6 +56,7 @@ const AddAbilityForm = props => {
           fullWidth
           margin="normal"
           variant="outlined"
+          required
         />
         <TextField
           onChange={props.onHandleAbilityOneChange}
@@ -64,6 +68,7 @@ const AddAbilityForm = props => {
           margin="normal"
           variant="outlined"
           multiline
+          required
         />
         <TextField
           onChange={props.onHandleAbilityOneChange}
@@ -74,26 +79,31 @@ const AddAbilityForm = props => {
           fullWidth
           margin="normal"
           variant="outlined"
+          required
         />
         <TextField
           onChange={props.onHandleAbilityOneChange}
           name="manacost"
           label="Mana Cost"
           style={{ margin: 8 }}
+          type="number"
           placeholder="Mana Cost"
           fullWidth
           margin="normal"
           variant="outlined"
+          required
         />
         <TextField
           onChange={props.onHandleAbilityOneChange}
           name="cooldown"
           label="Cool Down"
           style={{ margin: 8 }}
+          type="number"
           placeholder="Cool Down"
           fullWidth
           margin="normal"
           variant="outlined"
+          required
         />
       </DivAbility>
       <DivAbility>
@@ -107,6 +117,7 @@ const AddAbilityForm = props => {
           fullWidth
           margin="normal"
           variant="outlined"
+          required
         />
         <TextField
           onChange={props.onHandleAbilityTwoChange}
@@ -118,6 +129,7 @@ const AddAbilityForm = props => {
           margin="normal"
           variant="outlined"
           multiline
+          required
         />
         <TextField
           onChange={props.onHandleAbilityTwoChange}
@@ -128,26 +140,31 @@ const AddAbilityForm = props => {
           fullWidth
           margin="normal"
           variant="outlined"
+          required
         />
         <TextField
           onChange={props.onHandleAbilityTwoChange}
           name="manacost"
           label="Mana Cost"
           style={{ margin: 8 }}
+          type="number"
           placeholder="Mana Cost"
           fullWidth
           margin="normal"
           variant="outlined"
+          required
         />
         <TextField
           onChange={props.onHandleAbilityTwoChange}
           name="cooldown"
           label="Cool Down"
           style={{ margin: 8 }}
+          type="number"
           placeholder="Cool Down"
           fullWidth
           margin="normal"
           variant="outlined"
+          required
         />
       </DivAbility>
       <DivAbility>
@@ -161,6 +178,7 @@ const AddAbilityForm = props => {
           fullWidth
           margin="normal"
           variant="outlined"
+          required
         />
         <TextField
           onChange={props.onHandleAbilityThreeChange}
@@ -172,6 +190,7 @@ const AddAbilityForm = props => {
           margin="normal"
           variant="outlined"
           multiline
+          required
         />
         <TextField
           onChange={props.onHandleAbilityThreeChange}
@@ -182,26 +201,31 @@ const AddAbilityForm = props => {
           fullWidth
           margin="normal"
           variant="outlined"
+          required
         />
         <TextField
           onChange={props.onHandleAbilityThreeChange}
           name="manacost"
           label="Mana Cost"
+          type="number"
           style={{ margin: 8 }}
           placeholder="Mana Cost"
           fullWidth
           margin="normal"
           variant="outlined"
+          required
         />
         <TextField
           onChange={props.onHandleAbilityThreeChange}
           name="cooldown"
           label="Cool Down"
+          type="number"
           style={{ margin: 8 }}
           placeholder="Cool Down"
           fullWidth
           margin="normal"
           variant="outlined"
+          required
         />
       </DivAbility>
     </React.Fragment>

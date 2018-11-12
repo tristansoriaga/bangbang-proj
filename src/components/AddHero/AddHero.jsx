@@ -68,7 +68,7 @@ class AddHero extends Component {
 
   handleAddSkin = () => {
     this.setState({
-      skins: this.state.skins.concat([{ name: "" }])
+      skins: this.state.skins.concat([{ name: "", image: "" }])
     });
   };
 
@@ -95,31 +95,57 @@ class AddHero extends Component {
   };
 
   handleAbilityOneChange = e => {
-    this.setState({
-      ability_one: {
-        ...this.state.ability_one,
-        [e.target.name]: e.target.value
-      }
-    });
+    if (e.target.name === "manacost" || e.target.name === "cooldown") {
+      this.setState({
+        ability_one: {
+          ...this.state.ability_one,
+          [e.target.name]: parseInt(e.target.value)
+        }
+      });
+    } else {
+      this.setState({
+        ability_one: {
+          ...this.state.ability_one,
+          [e.target.name]: e.target.value
+        }
+      });
+    }
   };
 
   handleAbilityTwoChange = e => {
-    this.setState({
-      ability_two: {
-        ...this.state.ability_two,
-        [e.target.name]: e.target.value
-      }
-    });
+    if (e.target.name === "manacost" || e.target.name === "cooldown") {
+      this.setState({
+        ability_two: {
+          ...this.state.ability_two,
+          [e.target.name]: parseInt(e.target.value)
+        }
+      });
+    } else {
+      this.setState({
+        ability_two: {
+          ...this.state.ability_two,
+          [e.target.name]: e.target.value
+        }
+      });
+    }
   };
 
   handleAbilityThreeChange = e => {
-    this.setState({
-      ability_three: {
-        ...this.state.ability_three,
-        [e.target.name]: e.target.value
-      }
-    });
-    console.log(this.state.ability_three);
+    if (e.target.name === "manacost" || e.target.name === "cooldown") {
+      this.setState({
+        ability_three: {
+          ...this.state.ability_three,
+          [e.target.name]: parseInt(e.target.value)
+        }
+      });
+    } else {
+      this.setState({
+        ability_three: {
+          ...this.state.ability_three,
+          [e.target.name]: e.target.value
+        }
+      });
+    }
   };
 
   /*Submit Event Handler*/
@@ -129,7 +155,7 @@ class AddHero extends Component {
     db.settings({
       timestampsInSnapshots: true
     });
-    db.collection("cities")
+    db.collection("heroes")
       .doc(this.state.name)
       .set({
         name: this.state.name,
@@ -163,7 +189,8 @@ class AddHero extends Component {
           image: this.state.ability_three.image,
           manacost: this.state.ability_three.manacost,
           cooldown: this.state.ability_three.cooldown
-        }
+        },
+        skins: this.state.skins
       })
       .then(function() {
         console.log("Document successfully written!");
