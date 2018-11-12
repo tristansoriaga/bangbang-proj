@@ -13,12 +13,36 @@ const DivAddHero = styled.div`
 class AddHero extends Component {
   state = {
     HeroType: "",
-    HeroTheme: ""
+    HeroTheme: "",
+    skins: [{ name: "" }]
   };
 
-  handleChange = event => {
-    console.log(event.target);
-    this.setState({ [event.target.name]: event.target.value });
+  /*Add skins eventhandlers*/
+  handleSkinNameChange = idx => e => {
+    const newskins = this.state.skins.map((skin, sidx) => {
+      if (idx !== sidx) return skin;
+      return { ...skin, name: e.target.value };
+    });
+
+    this.setState({ skins: newskins });
+  };
+
+  handleAddSkin = () => {
+    this.setState({
+      skins: this.state.skins.concat([{ name: "" }])
+    });
+  };
+
+  handleRemoveSkin = idx => () => {
+    this.setState({
+      skins: this.state.skins.filter((s, sidx) => idx !== sidx)
+    });
+  };
+
+  /*Add info eventhandlers*/
+  handleChange = e => {
+    console.log(e.target);
+    this.setState({ [e.target.name]: e.target.value });
   };
 
   handleSubmit = e => {
@@ -61,7 +85,12 @@ class AddHero extends Component {
         <form onSubmit={this.handleSubmit}>
           <AddInfoForm state={this.state} onHandleChange={this.handleChange} />
           <AddAbilityForm />
-          <AddSkinsForm />
+          <AddSkinsForm
+            state={this.state}
+            onHandleSkinNameChange={e => this.handleSkinNameChange(e)}
+            onHandleAddSkinChange={this.handleAddSkin}
+            onHandleRemoveSkin={e => this.handleRemoveSkin(e)}
+          />
           <Button
             type="submit"
             style={{ textAlign: "right", margin: 8 }}

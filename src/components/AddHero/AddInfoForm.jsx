@@ -83,8 +83,11 @@ const AddInfoForm = props => {
             name: "HeroTheme"
           }}
         >
-          <MenuItem value="dark">Dark</MenuItem>
-          <MenuItem value="light">Light</MenuItem>
+          {HeroTheme.map(option => (
+            <MenuItem key={option.value} value={option.value}>
+              {option.value}
+            </MenuItem>
+          ))}
         </Select>
       </FormControl>
     </React.Fragment>
