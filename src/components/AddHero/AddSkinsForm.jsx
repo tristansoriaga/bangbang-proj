@@ -6,6 +6,41 @@ const AddSkinsForm = props => {
   return (
     <React.Fragment>
       <h2>Skins</h2>
+
+      {console.log(props.state.skins)}
+      {props.state.skins.map((skin, idx) => (
+        <div key={idx} className="skin">
+          <TextField
+            id="skin-name"
+            label="Name"
+            style={{ margin: 8, width: "30%" }}
+            placeholder={`Skin name #${idx + 1}`}
+            margin="normal"
+            variant="outlined"
+            value={skin.name}
+            onChange={props.onHandleSkinNameChange(idx)}
+          />
+          <TextField
+            id="skin-image"
+            label="Image"
+            style={{ margin: 8, width: "60%" }}
+            placeholder={`Skin image #${idx + 1}`}
+            margin="normal"
+            variant="outlined"
+            value={skin.image}
+            onChange={props.onHandleSkinImageChange(idx)}
+          />
+          <Button
+            type="button"
+            style={{ textAlign: "right", padding: 20, marginTop: "6px" }}
+            variant="contained"
+            color="primary"
+            onClick={props.onHandleRemoveSkin(idx)}
+          >
+            &mdash;
+          </Button>
+        </div>
+      ))}
       <Button
         type="button"
         style={{ textAlign: "right", margin: 8 }}
@@ -15,30 +50,6 @@ const AddSkinsForm = props => {
       >
         Add
       </Button>
-      {props.state.skins.map((skin, idx) => (
-        <div key={idx} className="skin">
-          <TextField
-            id="skin-name"
-            label="Name"
-            style={{ margin: 8 }}
-            placeholder={`Skin name #${idx + 1}`}
-            fullWidth
-            margin="normal"
-            variant="outlined"
-            value={skin.name}
-            onChange={props.onHandleSkinNameChange(idx)}
-          />
-          <Button
-            type="button"
-            style={{ textAlign: "right", margin: 8 }}
-            variant="contained"
-            color="primary"
-            onClick={props.onHandleRemoveSkin(idx)}
-          >
-            -
-          </Button>
-        </div>
-      ))}
     </React.Fragment>
   );
 };
