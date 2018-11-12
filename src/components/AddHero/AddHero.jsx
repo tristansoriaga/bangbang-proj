@@ -18,6 +18,32 @@ class AddHero extends Component {
     background_story: "",
     type: "",
     theme: "",
+    ability_passive: {
+      name: "",
+      description: "",
+      image: ""
+    },
+    ability_one: {
+      name: "",
+      description: "",
+      image: "",
+      manacost: 0,
+      cooldown: 0
+    },
+    ability_two: {
+      name: "",
+      description: "",
+      image: "",
+      manacost: 0,
+      cooldown: 0
+    },
+    ability_three: {
+      name: "",
+      description: "",
+      image: "",
+      manacost: 0,
+      cooldown: 0
+    },
     skins: [{ name: "", image: "" }]
   };
 
@@ -59,6 +85,43 @@ class AddHero extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  handleAbilityPassiveChange = e => {
+    this.setState({
+      ability_passive: {
+        ...this.state.ability_passive,
+        [e.target.name]: e.target.value
+      }
+    });
+  };
+
+  handleAbilityOneChange = e => {
+    this.setState({
+      ability_one: {
+        ...this.state.ability_one,
+        [e.target.name]: e.target.value
+      }
+    });
+  };
+
+  handleAbilityTwoChange = e => {
+    this.setState({
+      ability_two: {
+        ...this.state.ability_two,
+        [e.target.name]: e.target.value
+      }
+    });
+  };
+
+  handleAbilityThreeChange = e => {
+    this.setState({
+      ability_three: {
+        ...this.state.ability_three,
+        [e.target.name]: e.target.value
+      }
+    });
+    console.log(this.state.ability_three);
+  };
+
   /*Submit Event Handler*/
   handleSubmit = e => {
     e.preventDefault();
@@ -66,20 +129,6 @@ class AddHero extends Component {
     db.settings({
       timestampsInSnapshots: true
     });
-    var docData = {
-      stringExample: "Hello world!",
-      booleanExample: true,
-      numberExample: 3.14159265,
-      dateExample: new Date("December 10, 1815"),
-      arrayExample: [5, true, "hello"],
-      nullExample: null,
-      objectExample: {
-        a: 5,
-        b: {
-          nested: "foo"
-        }
-      }
-    };
     db.collection("cities")
       .doc(this.state.name)
       .set({
@@ -88,7 +137,33 @@ class AddHero extends Component {
         bg_img: this.state.bg_img,
         background_story: this.state.background_story,
         type: this.state.type,
-        theme: this.state.theme
+        theme: this.state.theme,
+        ability_passive: {
+          name: this.state.ability_passive.name,
+          description: this.state.ability_passive.description,
+          image: this.state.ability_passive.image
+        },
+        ability_one: {
+          name: this.state.ability_one.name,
+          description: this.state.ability_one.description,
+          image: this.state.ability_one.image,
+          manacost: this.state.ability_one.manacost,
+          cooldown: this.state.ability_one.cooldown
+        },
+        ability_two: {
+          name: this.state.ability_two.name,
+          description: this.state.ability_two.description,
+          image: this.state.ability_two.image,
+          manacost: this.state.ability_two.manacost,
+          cooldown: this.state.ability_two.cooldown
+        },
+        ability_three: {
+          name: this.state.ability_three.name,
+          description: this.state.ability_three.description,
+          image: this.state.ability_three.image,
+          manacost: this.state.ability_three.manacost,
+          cooldown: this.state.ability_three.cooldown
+        }
       })
       .then(function() {
         console.log("Document successfully written!");
@@ -104,7 +179,12 @@ class AddHero extends Component {
         <h1 style={{ margin: 8 }}>Add Hero</h1>
         <form onSubmit={this.handleSubmit}>
           <AddInfoForm state={this.state} onHandleChange={this.handleChange} />
-          <AddAbilityForm />
+          <AddAbilityForm
+            onHandleAbilityPassiveChange={this.handleAbilityPassiveChange}
+            onHandleAbilityOneChange={this.handleAbilityOneChange}
+            onHandleAbilityTwoChange={this.handleAbilityTwoChange}
+            onHandleAbilityThreeChange={this.handleAbilityThreeChange}
+          />
           <AddSkinsForm
             state={this.state}
             onHandleSkinNameChange={e => this.handleSkinNameChange(e)}
