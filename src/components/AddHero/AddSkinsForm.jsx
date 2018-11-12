@@ -6,8 +6,6 @@ const AddSkinsForm = props => {
   return (
     <React.Fragment>
       <h2>Skins</h2>
-
-      {console.log(props.state.skins)}
       {props.state.skins.map((skin, idx) => (
         <div key={idx} className="skin">
           <TextField

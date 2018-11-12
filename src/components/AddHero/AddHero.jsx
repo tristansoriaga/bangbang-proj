@@ -12,8 +12,12 @@ const DivAddHero = styled.div`
 `;
 class AddHero extends Component {
   state = {
-    HeroType: "",
-    HeroTheme: "",
+    name: "",
+    image: "",
+    bg_img: "",
+    background_story: "",
+    type: "",
+    theme: "",
     skins: [{ name: "", image: "" }]
   };
 
@@ -55,6 +59,7 @@ class AddHero extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
+  /*Submit Event Handler*/
   handleSubmit = e => {
     e.preventDefault();
     const db = fire.firestore();
@@ -76,9 +81,14 @@ class AddHero extends Component {
       }
     };
     db.collection("cities")
-      .doc("qwe")
+      .doc(this.state.name)
       .set({
-        stringExample: "fdsa Hello world! asdf"
+        name: this.state.name,
+        image: this.state.image,
+        bg_img: this.state.bg_img,
+        background_story: this.state.background_story,
+        type: this.state.type,
+        theme: this.state.theme
       })
       .then(function() {
         console.log("Document successfully written!");

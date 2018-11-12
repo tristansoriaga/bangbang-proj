@@ -20,7 +20,8 @@ const AddInfoForm = props => {
   return (
     <React.Fragment>
       <TextField
-        id="name"
+        onChange={props.onHandleChange}
+        name="name"
         label="Name"
         style={{ margin: 8 }}
         placeholder="Name"
@@ -29,7 +30,8 @@ const AddInfoForm = props => {
         variant="outlined"
       />
       <TextField
-        id="image"
+        onChange={props.onHandleChange}
+        name="image"
         label="Image"
         style={{ margin: 8 }}
         placeholder="Image"
@@ -38,7 +40,8 @@ const AddInfoForm = props => {
         variant="outlined"
       />
       <TextField
-        id="bg_img"
+        onChange={props.onHandleChange}
+        name="bg_img"
         label="Bg Img"
         style={{ margin: 8 }}
         placeholder="Bg Img"
@@ -47,7 +50,8 @@ const AddInfoForm = props => {
         variant="outlined"
       />
       <TextField
-        id="background_story"
+        onChange={props.onHandleChange}
+        name="background_story"
         label="Background Story"
         style={{ margin: 8, paddingBottom: "20px" }}
         placeholder="Background Story"
@@ -59,12 +63,10 @@ const AddInfoForm = props => {
       <FormControl variant="outlined" style={{ padding: 8 }}>
         <InputLabel>Hero Type</InputLabel>
         <Select
-          value={props.state.HeroType}
+          name="type"
+          value={props.state.type}
           style={{ width: "150px" }}
           onChange={props.onHandleChange}
-          inputProps={{
-            name: "HeroType"
-          }}
         >
           {HeroType.map(option => (
             <MenuItem key={option.value} value={option.value}>
@@ -76,12 +78,10 @@ const AddInfoForm = props => {
       <FormControl variant="outlined" style={{ padding: 8 }}>
         <InputLabel>Hero Theme</InputLabel>
         <Select
-          value={props.state.HeroTheme}
+          name="theme"
+          value={props.state.theme}
           style={{ width: "150px" }}
           onChange={props.onHandleChange}
-          inputProps={{
-            name: "HeroTheme"
-          }}
         >
           {HeroTheme.map(option => (
             <MenuItem key={option.value} value={option.value}>
