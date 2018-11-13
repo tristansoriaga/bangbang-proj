@@ -64,36 +64,38 @@ const AddInfoForm = props => {
         multiline
         required
       />
-      <FormControl required variant="outlined" style={{ padding: 8 }}>
-        <InputLabel>Hero Type</InputLabel>
-        <Select
-          name="type"
-          value={props.state.type}
-          style={{ width: "150px" }}
-          onChange={props.onHandleChange}
-        >
-          {HeroType.map(option => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.value}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-      <FormControl required variant="outlined" style={{ padding: 8 }}>
-        <InputLabel>Hero Theme</InputLabel>
-        <Select
-          name="theme"
-          value={props.state.theme}
-          style={{ width: "150px" }}
-          onChange={props.onHandleChange}
-        >
-          {HeroTheme.map(option => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.value}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
+      <TextField
+        required
+        select
+        label="Hero Type"
+        name="type"
+        variant="outlined"
+        value={props.state.type}
+        style={{ width: "150px", padding: "0 10px" }}
+        onChange={props.onHandleChange}
+      >
+        {HeroType.map(option => (
+          <MenuItem key={option.value} value={option.value}>
+            {option.value}
+          </MenuItem>
+        ))}
+      </TextField>
+      <TextField
+        required
+        select
+        label="Hero Theme"
+        name="theme"
+        variant="outlined"
+        value={props.state.theme}
+        style={{ width: "150px" }}
+        onChange={props.onHandleChange}
+      >
+        {HeroTheme.map(option => (
+          <MenuItem key={option.value} value={option.value}>
+            {option.value}
+          </MenuItem>
+        ))}
+      </TextField>
     </React.Fragment>
   );
 };

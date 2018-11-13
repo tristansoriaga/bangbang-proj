@@ -158,7 +158,7 @@ class AddHero extends Component {
     db.collection("heroes")
       .doc(this.state.name)
       .set({
-        name: this.state.name,
+        name: this.state.name.toLowerCase(),
         image: this.state.image,
         bg_img: this.state.bg_img,
         background_story: this.state.background_story,
