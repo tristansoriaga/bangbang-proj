@@ -66,10 +66,9 @@ class UploadImage extends Component {
         <DivUploadImage>
           <TextField
             value={this.state.name}
-            name="name"
-            label="Name"
+            label={this.props.uploadLabel}
             style={{ margin: 8, width: "90%" }}
-            placeholder="Name"
+            placeholder={this.props.uploadPlaceholder}
             margin="normal"
             variant="outlined"
             required
