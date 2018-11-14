@@ -8,7 +8,6 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import fire from "../../firebase";
 
 const DivUploadImage = styled.div`
-  min-width: 500px;
   background-color: white;
 `;
 class UploadImage extends Component {
@@ -66,9 +65,9 @@ class UploadImage extends Component {
         <DivUploadImage>
           <TextField
             value={this.state.name}
-            label={this.props.uploadLabel}
-            style={{ margin: 8, width: "90%" }}
-            placeholder={this.props.uploadPlaceholder}
+            label={this.props.propLabel}
+            style={{ margin: 8 }}
+            placeholder={this.props.propPlaceholder}
             margin="normal"
             variant="outlined"
             required

@@ -4,12 +4,12 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import HeroProfile from "./HeroProfile/HeroProfile";
 import Heroes from "./Heroes/Heroes";
 import AddHero from "./AddHero/AddHero";
-import UploadImage from "./AddHero/UploadImage";
+//import UploadImage from "./AddHero/UploadImage";
 
 const Router = () => (
   <BrowserRouter>
     <Switch>
-      <Route exact path="/" component={UploadImage} />
+      <Route exact path="/" component={AddHero} />
       <Route exact path="/heroes" component={Heroes} />
       <Route exact path="/hero/:name" component={HeroProfile} />
     </Switch>
