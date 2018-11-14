@@ -8,7 +8,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import fire from "../../firebase";
 
 const DivUploadImage = styled.div`
-  width: 500px;
+  min-width: 500px;
   background-color: white;
 `;
 class UploadImage extends Component {
@@ -17,10 +17,6 @@ class UploadImage extends Component {
     success: false,
     name: ""
   };
-
-  componentWillUnmount() {
-    clearTimeout(this.timer);
-  }
 
   handleChange = e => {
     if (e.target.files[0] !== undefined) {
@@ -43,7 +39,9 @@ class UploadImage extends Component {
               break;
             case "running": // or 'running'
               console.log("Upload is running");
+
               break;
+            default:
           }
         },
         error => {},
@@ -61,56 +59,6 @@ class UploadImage extends Component {
     }
   };
 
-  handleButtonClick = () => {
-    if (!this.state.loading) {
-      this.setState(
-        {
-          success: false,
-          loading: true
-        },
-        () => {
-          this.timer = setTimeout(() => {
-            this.setState({
-              loading: false,
-              success: true
-            });
-          }, 2000);
-        }
-      );
-    }
-  };
-
-  onUploadClick = e => {
-    var storageRef = fire.storage().ref();
-    var uploadTask = storageRef.child("images/rivers.jpg").put(e.target.value);
-
-    uploadTask.on(
-      "state_changed",
-      function(snapshot) {
-        var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        console.log("Upload is " + progress + "% done");
-        switch (snapshot.state) {
-          case fire.storage.TaskState.PAUSED: // or 'paused'
-            console.log("Upload is paused");
-            break;
-          case fire.storage.TaskState.RUNNING: // or 'running'
-            console.log("Upload is running");
-            break;
-          default:
-            console.log("error");
-        }
-      },
-      function(error) {
-        console.log(error);
-      },
-      function() {
-        uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
-          console.log("File available at", downloadURL);
-        });
-      }
-    );
-  };
-
   render() {
     const { loading, success } = this.state;
     return (
@@ -120,7 +68,7 @@ class UploadImage extends Component {
             value={this.state.name}
             name="name"
             label="Name"
-            style={{ margin: 8, width: "350px" }}
+            style={{ margin: 8, width: "90%" }}
             placeholder="Name"
             margin="normal"
             variant="outlined"
@@ -135,14 +83,22 @@ class UploadImage extends Component {
             style={{ display: "none" }}
           />
           <label htmlFor="contained-button-file">
-            <Button
-              variant="contained"
-              component="span"
-              color={success ? "secondary" : "primary"}
-            >
-              {success ? <CloudDone /> : <CloudUpload />}
-            </Button>
-            {loading && <CircularProgress size={30} />}
+            {loading ? (
+              <CircularProgress
+                size={50}
+                style={{ marginTop: "8px", marginLeft: "27px" }}
+              />
+            ) : (
+              <Button
+                style={{ width: "105px", height: "54px", marginTop: "8px" }}
+                name="btnUpload"
+                variant="contained"
+                component="span"
+                color={success ? "secondary" : "primary"}
+              >
+                {success ? <CloudDone /> : <CloudUpload />}
+              </Button>
+            )}
           </label>
         </DivUploadImage>
       </React.Fragment>
