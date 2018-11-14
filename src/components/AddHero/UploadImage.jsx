@@ -14,7 +14,7 @@ class UploadImage extends Component {
   state = {
     loading: false,
     success: false,
-    name: ""
+    url: ""
   };
 
   handleChange = e => {
@@ -25,30 +25,27 @@ class UploadImage extends Component {
       });
 
       var file = e.target.files[0];
-      var storageRef = fire.storage().ref("images123/" + file.name);
+      var storageRef = fire
+        .storage()
+        .ref(
+          "images123/heroes/" +
+            this.props.propUploadType +
+            "/" +
+            this.props.propHeroName +
+            "/" +
+            file.name
+        );
       storageRef.put(file);
 
       var task = storageRef.put(file);
       task.on(
         "state_changed",
-        snapshot => {
-          switch (snapshot.state) {
-            case "paused": // or 'paused'
-              console.log("Upload is paused");
-              break;
-            case "running": // or 'running'
-              console.log("Upload is running");
-
-              break;
-            default:
-          }
-        },
+        snapshot => {},
         error => {},
         () => {
           storageRef.getDownloadURL().then(url => {
-            console.log(url);
             this.setState({
-              name: url,
+              url: url,
               success: true,
               loading: false
             });
@@ -59,12 +56,13 @@ class UploadImage extends Component {
   };
 
   render() {
-    const { loading, success } = this.state;
+    const { loading, success, url } = this.state;
     return (
       <React.Fragment>
         <DivUploadImage>
           <TextField
-            value={this.state.name}
+            onChange={this.props.propOnChange}
+            value={url}
             label={this.props.propLabel}
             style={{ margin: 8, width: "80%" }}
             placeholder={this.props.propPlaceholder}

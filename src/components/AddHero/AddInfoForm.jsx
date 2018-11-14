@@ -68,7 +68,7 @@ const AddInfoForm = props => {
         name="type"
         variant="outlined"
         value={props.state.type}
-        style={{ width: "150px", padding: "0 10px" }}
+        style={{ width: "150px", margin: "0 18px 0 8px" }}
         onChange={props.onHandleChange}
       >
         {HeroType.map(option => (

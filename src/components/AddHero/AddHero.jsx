@@ -62,7 +62,7 @@ class AddHero extends Component {
       if (idx !== sidx) return skin;
       return { ...skin, image: e.target.value };
     });
-
+    console.log(newskins);
     this.setState({ skins: newskins });
   };
 
