@@ -8,7 +8,6 @@ const DivSkins = styled.div`
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-  background-color: red;
 `;
 
 const AddSkinsForm = props => {
@@ -19,9 +18,20 @@ const AddSkinsForm = props => {
       {props.state.skins.map((skin, idx) => (
         <div key={idx} className="skin">
           <DivSkins>
-            <div style={{ width: "200px" }}>
+            <div style={{ width: "80px" }}>
+              <Button
+                type="button"
+                style={{ padding: 20, marginLeft: "8px", marginTop: "6px" }}
+                variant="contained"
+                color="primary"
+                onClick={props.onHandleRemoveSkin(idx)}
+              >
+                &mdash;
+              </Button>
+            </div>
+            <div style={{ flexBasis: "30%" }}>
               <TextField
-                style={{ margin: 8 }}
+                style={{ margin: 8, width: "95%" }}
                 id="skin-name"
                 label={`Skin name #${idx + 1}`}
                 placeholder={`Skin name #${idx + 1}`}
@@ -43,24 +53,13 @@ const AddSkinsForm = props => {
             onChange={props.onHandleSkinImageChange(idx)}
             required
           /> */}
-            <div style={{ width: "300px" }}>
+            <div style={{ flexGrow: 1 }}>
               <UploadImage
                 style={{ margin: 8 }}
                 propValue={skin.image}
                 propPlaceholder={`Skin image #${idx + 1}`}
                 propLabel={`Skin image #${idx + 1}`}
               />
-            </div>
-            <div style={{ width: "80px" }}>
-              <Button
-                type="button"
-                style={{ padding: 20, marginTop: "6px" }}
-                variant="contained"
-                color="primary"
-                onClick={props.onHandleRemoveSkin(idx)}
-              >
-                &mdash;
-              </Button>
             </div>
           </DivSkins>
         </div>
