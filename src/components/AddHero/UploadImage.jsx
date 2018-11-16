@@ -18,6 +18,8 @@ class UploadImage extends Component {
   };
 
   handleChange = e => {
+    const { propUploadType, propHeroName } = this.props;
+
     if (e.target.files[0] !== undefined) {
       this.setState({
         success: false,
@@ -29,9 +31,9 @@ class UploadImage extends Component {
         .storage()
         .ref(
           "images123/heroes/" +
-            this.props.propUploadType +
+            propUploadType +
             "/" +
-            this.props.propHeroName +
+            propHeroName +
             "/" +
             file.name
         );
@@ -57,15 +59,23 @@ class UploadImage extends Component {
 
   render() {
     const { loading, success, url } = this.state;
+    const {
+      propOnChange,
+      propLabel,
+      propPlaceholder,
+      propValue,
+      propIdx
+    } = this.props;
+
     return (
       <React.Fragment>
         <DivUploadImage>
           <TextField
-            onChange={this.props.propOnChange}
-            value={url}
-            label={this.props.propLabel}
+            onChange={propOnChange}
+            value={propValue}
+            label={propLabel}
             style={{ margin: 8, width: "80%" }}
-            placeholder={this.props.propPlaceholder}
+            placeholder={propPlaceholder}
             margin="normal"
             variant="outlined"
             required
@@ -86,6 +96,7 @@ class UploadImage extends Component {
               />
             ) : (
               <Button
+                id={"btn" + propIdx}
                 style={{ width: "16%", height: "54px", marginTop: "8px" }}
                 name="btnUpload"
                 variant="contained"
