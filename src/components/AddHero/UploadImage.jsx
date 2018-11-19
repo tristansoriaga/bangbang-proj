@@ -19,7 +19,7 @@ class UploadImage extends Component {
   };
 
   handleChange = e => {
-    console.log(e.target);
+    const { propUploadType, propHeroName } = this.props;
     if (e.target.files[0] !== undefined) {
       this.setState({
         success: false,
@@ -31,9 +31,9 @@ class UploadImage extends Component {
         .storage()
         .ref(
           "images123/heroes/" +
-            this.props.propUploadType +
+            propUploadType +
             "/" +
-            this.props.propHeroName +
+            propHeroName +
             "/" +
             file.name
         );
@@ -55,34 +55,39 @@ class UploadImage extends Component {
         }
       );
     }
+    // var event = new Event("input", { bubbles: true });
+    // e.target.dispatchEvent(event);
   };
 
   // static getDerivedStateFromProps(props, current_state) {
-  //   // console.log("props", props);
-  //   // console.log("current_state", current_state);
-  //   if (current_state.id !== props.propIdx) {
-  //     return {
-  //       id: props.propIdx
-  //     };
-  //   }
+  //   console.log("props", props);
+  //   console.log("current_state", current_state);
+  //   // if (current_state.id !== props.propIdx) {
+  //   //   return {
+  //   //     id: props.propIdx
+  //   //   };
+  //   // }
   //   return null;
   // }
 
   render() {
     const { loading, success, url } = this.state;
-    console.log(this.props.propIdx);
+    const { propOnChange, propLabel, propPlaceholder, propIdx } = this.props;
+
     return (
       <React.Fragment>
         <DivUploadImage>
           <TextField
-            onChange={this.props.propOnChange}
+            id={"txtId" + this.props.propIdx}
+            onChange={propOnChange}
             value={url}
-            label={this.props.propLabel}
+            label={propLabel}
             style={{ margin: 8, width: "80%" }}
-            placeholder={this.props.propPlaceholder}
+            placeholder={propPlaceholder}
             margin="normal"
             variant="outlined"
             required
+            disabled
           />
           <input
             onChange={this.handleChange}
@@ -100,6 +105,7 @@ class UploadImage extends Component {
               />
             ) : (
               <Button
+                id={"btn" + propIdx}
                 style={{ width: "16%", height: "54px", marginTop: "8px" }}
                 name="btnUpload"
                 variant="contained"

@@ -47,6 +47,17 @@ class AddHero extends Component {
     skins: [{ name: "", image: "" }]
   };
 
+  // static getDerivedStateFromProps(props, current_state) {
+  //   console.log("props", props);
+  //   console.log("current_state", current_state);
+  //   // if (current_state.id !== props.propIdx) {
+  //   //   return {
+  //   //     id: props.propIdx
+  //   //   };
+  //   // }
+  //   return null;
+  // }
+
   /*Add skins eventhandlers*/
   handleSkinNameChange = idx => e => {
     const newskins = this.state.skins.map((skin, sidx) => {
@@ -58,6 +69,7 @@ class AddHero extends Component {
   };
 
   handleSkinImageChange = idx => e => {
+    console.log(e.target);
     const newskins = this.state.skins.map((skin, sidx) => {
       if (idx !== sidx) return skin;
       return { ...skin, image: e.target.value };
