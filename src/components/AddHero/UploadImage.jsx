@@ -14,10 +14,12 @@ class UploadImage extends Component {
   state = {
     loading: false,
     success: false,
-    url: ""
+    url: "",
+    id: 0
   };
 
   handleChange = e => {
+    console.log(e.target);
     if (e.target.files[0] !== undefined) {
       this.setState({
         success: false,
@@ -55,8 +57,20 @@ class UploadImage extends Component {
     }
   };
 
+  // static getDerivedStateFromProps(props, current_state) {
+  //   // console.log("props", props);
+  //   // console.log("current_state", current_state);
+  //   if (current_state.id !== props.propIdx) {
+  //     return {
+  //       id: props.propIdx
+  //     };
+  //   }
+  //   return null;
+  // }
+
   render() {
     const { loading, success, url } = this.state;
+    console.log(this.props.propIdx);
     return (
       <React.Fragment>
         <DivUploadImage>
@@ -73,12 +87,12 @@ class UploadImage extends Component {
           <input
             onChange={this.handleChange}
             accept="image/*"
-            id="contained-button-file"
+            id={"contained-button-file" + this.props.propIdx}
             multiple
             type="file"
             style={{ display: "none" }}
           />
-          <label htmlFor="contained-button-file">
+          <label htmlFor={"contained-button-file" + this.props.propIdx}>
             {loading ? (
               <CircularProgress
                 size={50}
