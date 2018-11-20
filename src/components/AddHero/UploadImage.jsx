@@ -14,8 +14,7 @@ class UploadImage extends Component {
   state = {
     loading: false,
     success: false,
-    url: "",
-    id: 0
+    url: ""
   };
 
   handleChange = e => {
@@ -55,20 +54,13 @@ class UploadImage extends Component {
         }
       );
     }
-    // var event = new Event("input", { bubbles: true });
-    // e.target.dispatchEvent(event);
   };
 
-  // static getDerivedStateFromProps(props, current_state) {
-  //   console.log("props", props);
-  //   console.log("current_state", current_state);
-  //   // if (current_state.id !== props.propIdx) {
-  //   //   return {
-  //   //     id: props.propIdx
-  //   //   };
-  //   // }
-  //   return null;
-  // }
+  //   componentDidMount() {
+  //     document.addEventListener("change", () => {
+  //       // this.props.propOnChange(this.refs.abc);
+  //     });
+  //   }
 
   render() {
     const { loading, success, url } = this.state;
@@ -78,7 +70,8 @@ class UploadImage extends Component {
       <React.Fragment>
         <DivUploadImage>
           <TextField
-            id={"txtId" + this.props.propIdx}
+            ref="abc"
+            id={"txtSkinName" + propIdx}
             onChange={propOnChange}
             value={url}
             label={propLabel}
@@ -87,17 +80,15 @@ class UploadImage extends Component {
             margin="normal"
             variant="outlined"
             required
-            disabled
           />
           <input
+            id={"contained-button-file" + propIdx}
             onChange={this.handleChange}
             accept="image/*"
-            id={"contained-button-file" + this.props.propIdx}
-            multiple
             type="file"
             style={{ display: "none" }}
           />
-          <label htmlFor={"contained-button-file" + this.props.propIdx}>
+          <label htmlFor={"contained-button-file" + propIdx}>
             {loading ? (
               <CircularProgress
                 size={50}
@@ -105,7 +96,7 @@ class UploadImage extends Component {
               />
             ) : (
               <Button
-                id={"btn" + propIdx}
+                id={"btnUpload" + propIdx}
                 style={{ width: "16%", height: "54px", marginTop: "8px" }}
                 name="btnUpload"
                 variant="contained"
