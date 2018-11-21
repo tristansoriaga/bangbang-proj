@@ -18,7 +18,7 @@ class UploadImage extends Component {
   };
 
   handleChange = e => {
-    const { propUploadType, propHeroName } = this.props;
+    const { propUploadType, propHeroName, propIdx } = this.props;
     if (e.target.files[0] !== undefined) {
       this.setState({
         success: false,
@@ -50,35 +50,30 @@ class UploadImage extends Component {
               success: true,
               loading: false
             });
+            this.props.onUpdate(url, propIdx);
           });
         }
       );
     }
   };
 
-  //   componentDidMount() {
-  //     document.addEventListener("change", () => {
-  //       // this.props.propOnChange(this.refs.abc);
-  //     });
-  //   }
-
   render() {
     const { loading, success, url } = this.state;
-    const { propOnChange, propLabel, propPlaceholder, propIdx } = this.props;
+    const { propLabel, propPlaceholder, propIdx } = this.props;
 
     return (
       <React.Fragment>
         <DivUploadImage>
           <TextField
-            ref="abc"
+            ref="myInput"
             id={"txtSkinName" + propIdx}
-            onChange={propOnChange}
             value={url}
             label={propLabel}
             style={{ margin: 8, width: "80%" }}
             placeholder={propPlaceholder}
             margin="normal"
             variant="outlined"
+            disabled
             required
           />
           <input

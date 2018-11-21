@@ -42,17 +42,6 @@ const AddSkinsForm = props => {
               />
             </div>
 
-            {/* <TextField
-            id="skin-image"
-            label="Image"
-            style={{ margin: 8, width: "60%" }}
-            placeholder={`Skin image #${idx + 1}`}
-            margin="normal"
-            variant="outlined"
-            value={skin.image}
-            onChange={props.onHandleSkinImageChange(idx)}
-            required
-          /> */}
             <div style={{ flexGrow: 1 }}>
               <UploadImage
                 style={{ margin: 8 }}
@@ -61,8 +50,8 @@ const AddSkinsForm = props => {
                 propValue={skin.image}
                 propPlaceholder={`Skin image #${idx + 1}`}
                 propLabel={`Skin image #${idx + 1}`}
-                propOnChange={props.onHandleSkinImageChange(idx)}
                 propIdx={idx}
+                onUpdate={props.onUpdate}
               />
             </div>
           </DivSkins>
