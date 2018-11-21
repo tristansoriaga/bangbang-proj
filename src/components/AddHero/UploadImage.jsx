@@ -27,7 +27,7 @@ class UploadImage extends Component {
       });
 
       var file = e.target.files[0];
-      var storageRef = fire.storage().ref("images123/heroes/" + propUploadType + "/" + propHeroName + "/" + file.name);
+      var storageRef = fire.storage().ref("images/heroes/" + propUploadType + "/" + propHeroName + "/" + file.name);
       storageRef.put(file);
 
       var task = storageRef.put(file);
