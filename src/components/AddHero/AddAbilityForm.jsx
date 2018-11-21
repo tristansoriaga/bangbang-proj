@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import UploadImage from "./UploadImage";
 import TextField from "@material-ui/core/TextField";
 
 const DivAbility = styled.div`
@@ -13,7 +14,7 @@ const AddAbilityForm = props => {
         <h2 style={{ margin: 8 }}>Ability Passive</h2>
         <TextField
           onChange={props.onHandleAbilityPassiveChange}
-          name="name"
+          name="ability_passive_name"
           label="Name"
           style={{ margin: 8 }}
           placeholder="Name"
@@ -24,7 +25,7 @@ const AddAbilityForm = props => {
         />
         <TextField
           onChange={props.onHandleAbilityPassiveChange}
-          name="description"
+          name="ability_passive_description"
           label="Description"
           style={{ margin: 8 }}
           placeholder="Description"
@@ -33,23 +34,21 @@ const AddAbilityForm = props => {
           variant="outlined"
           required
         />
-        <TextField
-          onChange={props.onHandleAbilityPassiveChange}
-          name="image"
-          label="Image"
+        <UploadImage
           style={{ margin: 8 }}
-          placeholder="Image"
-          fullWidth
-          margin="normal"
-          variant="outlined"
-          required
+          propUploadType="ability"
+          propHeroName={props.state.name.toLowerCase()}
+          propPlaceholder="Passive Image"
+          propLabel="Passive Image"
+          propIdx="passive"
+          onHandleImageUpload={props.onHandleImageUpload}
         />
       </DivAbility>
       <DivAbility>
         <h2 style={{ margin: 8 }}>Ability One</h2>
         <TextField
           onChange={props.onHandleAbilityOneChange}
-          name="name"
+          name="ability_one_name"
           label="Name"
           style={{ margin: 8 }}
           placeholder="Name"
@@ -60,7 +59,7 @@ const AddAbilityForm = props => {
         />
         <TextField
           onChange={props.onHandleAbilityOneChange}
-          name="description"
+          name="ability_one_description"
           label="Description"
           style={{ margin: 8 }}
           placeholder="Description"
@@ -70,20 +69,18 @@ const AddAbilityForm = props => {
           multiline
           required
         />
-        <TextField
-          onChange={props.onHandleAbilityOneChange}
-          name="image"
-          label="Image"
+        <UploadImage
           style={{ margin: 8 }}
-          placeholder="Image"
-          fullWidth
-          margin="normal"
-          variant="outlined"
-          required
+          propUploadType="ability"
+          propHeroName={props.state.name.toLowerCase()}
+          propPlaceholder="Ability One Image"
+          propLabel="Ability One Image"
+          propIdx="one"
+          onHandleImageUpload={props.onHandleImageUpload}
         />
         <TextField
           onChange={props.onHandleAbilityOneChange}
-          name="manacost"
+          name="ability_one_manacost"
           label="Mana Cost"
           style={{ margin: 8 }}
           type="number"
@@ -95,7 +92,7 @@ const AddAbilityForm = props => {
         />
         <TextField
           onChange={props.onHandleAbilityOneChange}
-          name="cooldown"
+          name="ability_one_cooldown"
           label="Cool Down"
           style={{ margin: 8 }}
           type="number"
@@ -131,16 +128,14 @@ const AddAbilityForm = props => {
           multiline
           required
         />
-        <TextField
-          onChange={props.onHandleAbilityTwoChange}
-          name="image"
-          label="Image"
+        <UploadImage
           style={{ margin: 8 }}
-          placeholder="Image"
-          fullWidth
-          margin="normal"
-          variant="outlined"
-          required
+          propUploadType="ability"
+          propHeroName={props.state.name.toLowerCase()}
+          propPlaceholder="Ability Two Image"
+          propLabel="Ability Two Image"
+          propIdx="two"
+          onHandleImageUpload={props.onHandleImageUpload}
         />
         <TextField
           onChange={props.onHandleAbilityTwoChange}
@@ -192,16 +187,14 @@ const AddAbilityForm = props => {
           multiline
           required
         />
-        <TextField
-          onChange={props.onHandleAbilityThreeChange}
-          name="image"
-          label="Image"
+        <UploadImage
           style={{ margin: 8 }}
-          placeholder="Image"
-          fullWidth
-          margin="normal"
-          variant="outlined"
-          required
+          propUploadType="ability"
+          propHeroName={props.state.name.toLowerCase()}
+          propPlaceholder="Ability Three Image"
+          propLabel="Ability Three Image"
+          propIdx="three"
+          onHandleImageUpload={props.onHandleImageUpload}
         />
         <TextField
           onChange={props.onHandleAbilityThreeChange}

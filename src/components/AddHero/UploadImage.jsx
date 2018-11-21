@@ -57,10 +57,13 @@ class UploadImage extends Component {
                 this.props.onHandleSkinUpload(url, propIdx);
                 break;
               case "background":
-                this.props.onHandleBgUpload(url);
+                this.props.onHandleImageUpload("background", url);
                 break;
               default:
-                console.log("error");
+                this.props.onHandleImageUpload(
+                  "ability_" + propIdx.toString(),
+                  url
+                );
             }
           });
         }

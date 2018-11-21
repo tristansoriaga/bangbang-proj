@@ -28,46 +28,33 @@ const AddInfoForm = props => {
         variant="outlined"
         required
       />
-      <TextField
-        onChange={props.onHandleChange}
-        name="image"
-        label="Image"
+      <UploadImage
         style={{ margin: 8 }}
-        placeholder="Image"
-        fullWidth
-        margin="normal"
-        variant="outlined"
-        required
-      />
-      <TextField
-        onChange={props.onHandleChange}
-        name="bg_img"
-        label="Bg Img"
-        style={{ margin: 8 }}
-        placeholder="Bg Img"
-        fullWidth
-        margin="normal"
-        variant="outlined"
-        required
+        propUploadType="profile_image"
+        propHeroName={props.state.name.toLowerCase()}
+        propPlaceholder="Profile Image"
+        propLabel="Profile Image"
+        propIdx={1}
+        onHandleImageUpload={props.onHandleImageUpload}
       />
       <UploadImage
         style={{ margin: 8 }}
         propUploadType="background"
         propHeroName={props.state.name.toLowerCase()}
-        propPlaceholder="Bg Img"
-        propLabel="Bg Img"
-        propIdx={1}
-        onHandleBgUpload={props.onHandleBgUpload}
+        propPlaceholder="Background Image"
+        propLabel="Background Image"
+        propIdx={2}
+        onHandleImageUpload={props.onHandleImageUpload}
       />
       <TextField
+        style={{ margin: 8, paddingBottom: "20px" }}
         onChange={props.onHandleChange}
         name="background_story"
-        label="Background Story"
-        style={{ margin: 8, paddingBottom: "20px" }}
         placeholder="Background Story"
-        fullWidth
+        label="Background Story"
         margin="normal"
         variant="outlined"
+        fullWidth
         multiline
         required
       />
