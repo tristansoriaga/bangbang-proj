@@ -195,7 +195,7 @@ class AddHero extends Component {
       timestampsInSnapshots: true
     });
     db.collection("heroes")
-      .doc(this.state.name)
+      .doc(this.state.name.toLowerCase())
       .set({
         name: this.state.name.toLowerCase(),
         profile_image: this.state.profile_image,
@@ -204,30 +204,30 @@ class AddHero extends Component {
         type: this.state.type,
         theme: this.state.theme,
         ability_passive: {
-          ability_passive_name: this.state.ability_passive.ability_passive_name,
-          ability_passive_description: this.state.ability_passive.ability_passive_description,
-          ability_passive_image: this.state.ability_passive.ability_passive_image
+          name: this.state.ability_passive.ability_passive_name,
+          description: this.state.ability_passive.ability_passive_description,
+          image: this.state.ability_passive.ability_passive_image
         },
         ability_one: {
-          ability_one_name: this.state.ability_one.ability_one_name,
-          ability_one_description: this.state.ability_one.ability_one_description,
-          ability_one_image: this.state.ability_one.ability_one_image,
-          ability_one_manacost: this.state.ability_one.ability_one_manacost,
-          ability_one_cooldown: this.state.ability_one.ability_one_cooldown
+          name: this.state.ability_one.ability_one_name,
+          description: this.state.ability_one.ability_one_description,
+          image: this.state.ability_one.ability_one_image,
+          manacost: this.state.ability_one.ability_one_manacost,
+          cooldown: this.state.ability_one.ability_one_cooldown
         },
         ability_two: {
-          ability_two_name: this.state.ability_two.ability_two_name,
-          ability_two_description: this.state.ability_two.ability_two_description,
-          ability_two_image: this.state.ability_two.ability_two_image,
-          ability_two_manacost: this.state.ability_two.ability_two_manacost,
-          ability_two_cooldown: this.state.ability_two.ability_two_cooldown
+          name: this.state.ability_two.ability_two_name,
+          description: this.state.ability_two.ability_two_description,
+          image: this.state.ability_two.ability_two_image,
+          manacost: this.state.ability_two.ability_two_manacost,
+          cooldown: this.state.ability_two.ability_two_cooldown
         },
         ability_three: {
-          ability_three_name: this.state.ability_three.ability_three_name,
-          ability_three_description: this.state.ability_three.ability_three_description,
-          ability_three_image: this.state.ability_three.ability_three_image,
-          ability_three_manacost: this.state.ability_three.ability_three_manacost,
-          ability_three_cooldown: this.state.ability_three.ability_three_cooldown
+          name: this.state.ability_three.ability_three_name,
+          description: this.state.ability_three.ability_three_description,
+          image: this.state.ability_three.ability_three_image,
+          manacost: this.state.ability_three.ability_three_manacost,
+          cooldown: this.state.ability_three.ability_three_cooldown
         },
         skins: this.state.skins
       })

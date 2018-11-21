@@ -45,16 +45,12 @@ const HeroBackground = props => {
   `;
 
   return (
-    <DivHeroBackground theme={props.state.bg_img}>
+    <DivHeroBackground theme={props.state.background_image}>
       <DivMain theme={props.state.theme}>
         <ParaType>{props.state.type}</ParaType>
-        <H1Name theme={props.state.theme}>
-          {props.state.name.toUpperCase()}
-        </H1Name>
+        <H1Name theme={props.state.theme}>{props.state.name.toUpperCase()}</H1Name>
         <DivStory className="hidescroll">
-          <ParaStory theme={props.state.theme}>
-            {props.state.background_story}
-          </ParaStory>
+          <ParaStory theme={props.state.theme}>{props.state.background_story}</ParaStory>
         </DivStory>
       </DivMain>
     </DivHeroBackground>
