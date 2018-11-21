@@ -19,7 +19,7 @@ class UploadImage extends Component {
 
   handleChange = e => {
     const { propUploadType, propHeroName, propIdx } = this.props;
-    console.log(this.props);
+
     if (e.target.files[0] !== undefined) {
       this.setState({
         success: false,
@@ -70,14 +70,14 @@ class UploadImage extends Component {
 
   render() {
     const { loading, success, url } = this.state;
-    const { propLabel, propPlaceholder, propIdx } = this.props;
+    const { propLabel, propPlaceholder, propIdx, propUploadType } = this.props;
 
     return (
       <React.Fragment>
         <DivUploadImage>
           <TextField
             ref="myInput"
-            id={"txtSkinName" + propIdx}
+            id={"txt" + propUploadType + propIdx}
             value={url}
             label={propLabel}
             style={{ margin: 8, width: "80%" }}
@@ -88,13 +88,13 @@ class UploadImage extends Component {
             required
           />
           <input
-            id={"contained-button-file" + propIdx}
+            id={"contained-button-file" + propUploadType + propIdx}
             onChange={this.handleChange}
             accept="image/*"
             type="file"
             style={{ display: "none" }}
           />
-          <label htmlFor={"contained-button-file" + propIdx}>
+          <label htmlFor={"contained-button-file" + propUploadType + propIdx}>
             {loading ? (
               <CircularProgress
                 size={50}
@@ -102,7 +102,7 @@ class UploadImage extends Component {
               />
             ) : (
               <Button
-                id={"btnUpload" + propIdx}
+                id={"btnUpload" + propUploadType + propIdx}
                 style={{ width: "16%", height: "54px", marginTop: "8px" }}
                 name="btnUpload"
                 variant="contained"
