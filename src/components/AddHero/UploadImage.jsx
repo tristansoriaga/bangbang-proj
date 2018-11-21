@@ -27,16 +27,7 @@ class UploadImage extends Component {
       });
 
       var file = e.target.files[0];
-      var storageRef = fire
-        .storage()
-        .ref(
-          "images123/heroes/" +
-            propUploadType +
-            "/" +
-            propHeroName +
-            "/" +
-            file.name
-        );
+      var storageRef = fire.storage().ref("images123/heroes/" + propUploadType + "/" + propHeroName + "/" + file.name);
       storageRef.put(file);
 
       var task = storageRef.put(file);
@@ -59,11 +50,11 @@ class UploadImage extends Component {
               case "background":
                 this.props.onHandleImageUpload("background", url);
                 break;
+              case "profile_image":
+                this.props.onHandleImageUpload("profile_image", url);
+                break;
               default:
-                this.props.onHandleImageUpload(
-                  "ability_" + propIdx.toString(),
-                  url
-                );
+                this.props.onHandleImageUpload("ability_" + propIdx.toString(), url);
             }
           });
         }
@@ -99,10 +90,7 @@ class UploadImage extends Component {
           />
           <label htmlFor={"contained-button-file" + propUploadType + propIdx}>
             {loading ? (
-              <CircularProgress
-                size={50}
-                style={{ marginTop: "8px", marginLeft: "27px" }}
-              />
+              <CircularProgress size={50} style={{ marginTop: "8px", marginLeft: "27px" }} />
             ) : (
               <Button
                 id={"btnUpload" + propUploadType + propIdx}

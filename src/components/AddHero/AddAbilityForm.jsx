@@ -107,7 +107,7 @@ const AddAbilityForm = props => {
         <h2 style={{ margin: 8 }}>Ability Two</h2>
         <TextField
           onChange={props.onHandleAbilityTwoChange}
-          name="name"
+          name="ability_two_name"
           label="Name"
           style={{ margin: 8 }}
           placeholder="Name"
@@ -118,7 +118,7 @@ const AddAbilityForm = props => {
         />
         <TextField
           onChange={props.onHandleAbilityTwoChange}
-          name="description"
+          name="ability_two_description"
           label="Description"
           style={{ margin: 8 }}
           placeholder="Description"
@@ -139,7 +139,7 @@ const AddAbilityForm = props => {
         />
         <TextField
           onChange={props.onHandleAbilityTwoChange}
-          name="manacost"
+          name="ability_two_manacost"
           label="Mana Cost"
           style={{ margin: 8 }}
           type="number"
@@ -151,7 +151,7 @@ const AddAbilityForm = props => {
         />
         <TextField
           onChange={props.onHandleAbilityTwoChange}
-          name="cooldown"
+          name="ability_two_cooldown"
           label="Cool Down"
           style={{ margin: 8 }}
           type="number"
@@ -166,7 +166,7 @@ const AddAbilityForm = props => {
         <h2 style={{ margin: 8 }}>Ability Three</h2>
         <TextField
           onChange={props.onHandleAbilityThreeChange}
-          name="name"
+          name="ability_three_name"
           label="Name"
           style={{ margin: 8 }}
           placeholder="Name"
@@ -177,7 +177,7 @@ const AddAbilityForm = props => {
         />
         <TextField
           onChange={props.onHandleAbilityThreeChange}
-          name="description"
+          name="ability_three_description"
           label="Description"
           style={{ margin: 8 }}
           placeholder="Description"
@@ -198,7 +198,7 @@ const AddAbilityForm = props => {
         />
         <TextField
           onChange={props.onHandleAbilityThreeChange}
-          name="manacost"
+          name="ability_three_manacost"
           label="Mana Cost"
           type="number"
           style={{ margin: 8 }}
@@ -210,7 +210,7 @@ const AddAbilityForm = props => {
         />
         <TextField
           onChange={props.onHandleAbilityThreeChange}
-          name="cooldown"
+          name="ability_three_cooldown"
           label="Cool Down"
           type="number"
           style={{ margin: 8 }}
