@@ -47,11 +47,10 @@ const AddSkinsForm = props => {
                 style={{ margin: 8 }}
                 propUploadType="skins"
                 propHeroName={props.state.name.toLowerCase()}
-                propValue={skin.image}
                 propPlaceholder={`Skin image #${idx + 1}`}
                 propLabel={`Skin image #${idx + 1}`}
                 propIdx={idx}
-                onUpdate={props.onUpdate}
+                onHandleSkinUpload={props.onHandleSkinUpload}
               />
             </div>
           </DivSkins>

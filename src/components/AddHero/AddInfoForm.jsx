@@ -1,4 +1,5 @@
 import React from "react";
+import UploadImage from "./UploadImage";
 import TextField from "@material-ui/core/TextField";
 import MenuItem from "@material-ui/core/MenuItem";
 
@@ -48,6 +49,15 @@ const AddInfoForm = props => {
         margin="normal"
         variant="outlined"
         required
+      />
+      <UploadImage
+        style={{ margin: 8 }}
+        propUploadType="background"
+        propHeroName={props.state.name.toLowerCase()}
+        propPlaceholder="Bg Img"
+        propLabel="Bg Img"
+        propIdx={1}
+        onHandleBgUpload={props.onHandleBgUpload}
       />
       <TextField
         onChange={props.onHandleChange}

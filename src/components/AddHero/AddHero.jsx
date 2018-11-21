@@ -57,12 +57,11 @@ class AddHero extends Component {
     this.setState({ skins: newskins });
   };
 
-  onUpdate = (url, idx) => {
+  handleSkinUpload = (url, idx) => {
     const newskins = this.state.skins.map((skin, sidx) => {
       if (idx !== sidx) return skin;
       return { ...skin, image: url };
     });
-    console.log(newskins);
     this.setState({ skins: newskins });
   };
 
@@ -83,6 +82,11 @@ class AddHero extends Component {
   /*Add info eventhandlers*/
   handleChange = e => {
     this.setState({ [e.target.name]: e.target.value });
+  };
+
+  handleBgUpload = url => {
+    this.setState({ bg_img: url });
+    console.log(this.state);
   };
 
   handleAbilityPassiveChange = e => {
@@ -205,7 +209,11 @@ class AddHero extends Component {
       <DivAddHero>
         <h1 style={{ margin: 8 }}>Add Hero</h1>
         <form onSubmit={this.handleSubmit}>
-          <AddInfoForm state={this.state} onHandleChange={this.handleChange} />
+          <AddInfoForm
+            state={this.state}
+            onHandleChange={this.handleChange}
+            onHandleBgUpload={this.handleBgUpload}
+          />
           <AddAbilityForm
             onHandleAbilityPassiveChange={this.handleAbilityPassiveChange}
             onHandleAbilityOneChange={this.handleAbilityOneChange}
@@ -218,7 +226,7 @@ class AddHero extends Component {
             onHandleSkinImageChange={e => this.handleSkinImageChange(e)}
             onHandleAddSkinChange={this.handleAddSkin}
             onHandleRemoveSkin={e => this.handleRemoveSkin(e)}
-            onUpdate={this.onUpdate}
+            onHandleSkinUpload={this.handleSkinUpload}
           />
           <hr style={{ margin: "50px 0" }} />
           <Button

@@ -19,6 +19,7 @@ class UploadImage extends Component {
 
   handleChange = e => {
     const { propUploadType, propHeroName, propIdx } = this.props;
+    console.log(this.props);
     if (e.target.files[0] !== undefined) {
       this.setState({
         success: false,
@@ -50,7 +51,17 @@ class UploadImage extends Component {
               success: true,
               loading: false
             });
-            this.props.onUpdate(url, propIdx);
+
+            switch (propUploadType) {
+              case "skins":
+                this.props.onHandleSkinUpload(url, propIdx);
+                break;
+              case "background":
+                this.props.onHandleBgUpload(url);
+                break;
+              default:
+                console.log("error");
+            }
           });
         }
       );
