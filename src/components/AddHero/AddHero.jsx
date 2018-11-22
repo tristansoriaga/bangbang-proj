@@ -5,7 +5,6 @@ import fire from "../../firebase";
 import AddInfoForm from "./AddInfoForm";
 import AddAbilityForm from "./AddAbilityForm";
 import AddSkinsForm from "./AddSkinsForm";
-import Snackbar from "@material-ui/core/Snackbar";
 import CustomizedSnackbars from "../Snackbar/Snackbar";
 
 const DivAddHero = styled.div`
