@@ -5,6 +5,7 @@ import fire from "../../firebase";
 import AddInfoForm from "./AddInfoForm";
 import AddAbilityForm from "./AddAbilityForm";
 import AddSkinsForm from "./AddSkinsForm";
+import Snackbar from "@material-ui/core/Snackbar";
 
 const DivAddHero = styled.div`
   background-color: white;
@@ -12,6 +13,7 @@ const DivAddHero = styled.div`
 `;
 class AddHero extends Component {
   state = {
+    open: false,
     name: "",
     profile_image: "",
     background_image: "",
@@ -45,6 +47,14 @@ class AddHero extends Component {
       ability_three_cooldown: 0
     },
     skins: [{ name: "", image: "" }]
+  };
+
+  /*Success alert */
+  handleClose = () => {
+    this.setState({ open: false });
+  };
+  handleClick = state => () => {
+    this.setState({ open: true, ...this.state.open });
   };
 
   /*Add skins eventhandlers*/
@@ -198,6 +208,7 @@ class AddHero extends Component {
   /*Submit Event Handler*/
   handleSubmit = e => {
     e.preventDefault();
+
     const db = fire.firestore();
     db.settings({
       timestampsInSnapshots: true
@@ -240,6 +251,7 @@ class AddHero extends Component {
         skins: this.state.skins
       })
       .then(function() {
+        this.setState({ open: true, ...this.state.open });
         console.log("Document successfully written!");
       })
       .catch(function(error) {
@@ -249,45 +261,65 @@ class AddHero extends Component {
 
   render() {
     return (
-      <DivAddHero>
-        <h1 style={{ margin: 8 }}>Add Hero</h1>
-        <form onSubmit={this.handleSubmit}>
-          <AddInfoForm
-            state={this.state}
-            onHandleChange={this.handleChange}
-            onHandleImageUpload={this.handleImageUpload}
-          />
-          <AddAbilityForm
-            state={this.state}
-            onHandleImageUpload={this.handleImageUpload}
-            onHandleAbilityPassiveChange={this.handleAbilityPassiveChange}
-            onHandleAbilityOneChange={this.handleAbilityOneChange}
-            onHandleAbilityTwoChange={this.handleAbilityTwoChange}
-            onHandleAbilityThreeChange={this.handleAbilityThreeChange}
-          />
-          <AddSkinsForm
-            state={this.state}
-            onHandleSkinNameChange={e => this.handleSkinNameChange(e)}
-            onHandleSkinImageChange={e => this.handleSkinImageChange(e)}
-            onHandleAddSkinChange={this.handleAddSkin}
-            onHandleRemoveSkin={e => this.handleRemoveSkin(e)}
-            onHandleSkinUpload={this.handleSkinUpload}
-          />
-          <hr style={{ margin: "50px 0" }} />
+      <React.Fragment>
+        <DivAddHero>
+          <h1 style={{ margin: 8 }}>Add Hero</h1>
+          <form onSubmit={this.handleSubmit}>
+            <AddInfoForm
+              state={this.state}
+              onHandleChange={this.handleChange}
+              onHandleImageUpload={this.handleImageUpload}
+            />
+            <AddAbilityForm
+              state={this.state}
+              onHandleImageUpload={this.handleImageUpload}
+              onHandleAbilityPassiveChange={this.handleAbilityPassiveChange}
+              onHandleAbilityOneChange={this.handleAbilityOneChange}
+              onHandleAbilityTwoChange={this.handleAbilityTwoChange}
+              onHandleAbilityThreeChange={this.handleAbilityThreeChange}
+            />
+            <AddSkinsForm
+              state={this.state}
+              onHandleSkinNameChange={e => this.handleSkinNameChange(e)}
+              onHandleSkinImageChange={e => this.handleSkinImageChange(e)}
+              onHandleAddSkinChange={this.handleAddSkin}
+              onHandleRemoveSkin={e => this.handleRemoveSkin(e)}
+              onHandleSkinUpload={this.handleSkinUpload}
+            />
+            <hr style={{ margin: "50px 0" }} />
+            <Button
+              type="submit"
+              style={{
+                textAlign: "right",
+                margin: "0 auto",
+                display: "block"
+              }}
+              variant="contained"
+              color="secondary"
+            >
+              Submit
+            </Button>
+          </form>
           <Button
-            type="submit"
-            style={{
-              textAlign: "right",
-              margin: "0 auto",
-              display: "block"
-            }}
-            variant="contained"
-            color="secondary"
+            onClick={this.handleClick({
+              vertical: "top",
+              horizontal: "center"
+            })}
           >
-            Submit
+            Top-Center
           </Button>
-        </form>
-      </DivAddHero>
+          <Snackbar
+            anchorOrigin={{ vertical: "top", horizontal: "center" }}
+            open={this.state.open}
+            onClose={this.handleClose}
+            ContentProps={{
+              "aria-describedby": "message-id"
+            }}
+            variant="success"
+            message={<span id="message-id">Successfully uploaded!</span>}
+          />
+        </DivAddHero>
+      </React.Fragment>
     );
   }
 }

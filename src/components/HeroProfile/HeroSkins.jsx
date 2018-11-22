@@ -10,7 +10,7 @@ const HeroSkins = props => {
     <DivSkins>
       {props.skins.map((val, index) => (
         <div key={index}>
-          <img width="269" src={val.image} alt={val.name} />
+          <img width="269" height="478" src={val.image} alt={val.name} />
           <p style={{ color: "white" }}>{val.name}</p>
         </div>
       ))}
