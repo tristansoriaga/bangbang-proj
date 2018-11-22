@@ -6,12 +6,17 @@ import AddInfoForm from "./AddInfoForm";
 import AddAbilityForm from "./AddAbilityForm";
 import AddSkinsForm from "./AddSkinsForm";
 import Snackbar from "@material-ui/core/Snackbar";
+import CustomizedSnackbars from "../Snackbar/Snackbar";
 
 const DivAddHero = styled.div`
   background-color: white;
   padding: 5em 7em;
 `;
 class AddHero extends Component {
+  constructor(props) {
+    super(props);
+    this.myRef = React.createRef();
+  }
   state = {
     open: false,
     name: "",
@@ -47,14 +52,6 @@ class AddHero extends Component {
       ability_three_cooldown: 0
     },
     skins: [{ name: "", image: "" }]
-  };
-
-  /*Success alert */
-  handleClose = () => {
-    this.setState({ open: false });
-  };
-  handleClick = state => () => {
-    this.setState({ open: true, ...this.state.open });
   };
 
   /*Add skins eventhandlers*/
@@ -143,10 +140,7 @@ class AddHero extends Component {
   };
 
   handleAbilityOneChange = e => {
-    if (
-      e.target.name === "ability_one_manacost" ||
-      e.target.name === "ability_one_cooldown"
-    ) {
+    if (e.target.name === "ability_one_manacost" || e.target.name === "ability_one_cooldown") {
       this.setState({
         ability_one: {
           ...this.state.ability_one,
@@ -164,10 +158,7 @@ class AddHero extends Component {
   };
 
   handleAbilityTwoChange = e => {
-    if (
-      e.target.name === "ability_two_manacost" ||
-      e.target.name === "ability_two_cooldown"
-    ) {
+    if (e.target.name === "ability_two_manacost" || e.target.name === "ability_two_cooldown") {
       this.setState({
         ability_two: {
           ...this.state.ability_two,
@@ -185,10 +176,7 @@ class AddHero extends Component {
   };
 
   handleAbilityThreeChange = e => {
-    if (
-      e.target.name === "ability_three_cooldown" ||
-      e.target.name === "ability_three_cooldown"
-    ) {
+    if (e.target.name === "ability_three_cooldown" || e.target.name === "ability_three_cooldown") {
       this.setState({
         ability_three: {
           ...this.state.ability_three,
@@ -252,10 +240,11 @@ class AddHero extends Component {
       })
       .then(function() {
         this.setState({ open: true, ...this.state.open });
-        console.log("Document successfully written!");
+        this.actualChild.handleClick(true);
       })
       .catch(function(error) {
         console.error("Error writing document: ", error);
+        this.actualChild.handleClick(false);
       });
   };
 
@@ -300,24 +289,7 @@ class AddHero extends Component {
               Submit
             </Button>
           </form>
-          <Button
-            onClick={this.handleClick({
-              vertical: "top",
-              horizontal: "center"
-            })}
-          >
-            Top-Center
-          </Button>
-          <Snackbar
-            anchorOrigin={{ vertical: "top", horizontal: "center" }}
-            open={this.state.open}
-            onClose={this.handleClose}
-            ContentProps={{
-              "aria-describedby": "message-id"
-            }}
-            variant="success"
-            message={<span id="message-id">Successfully uploaded!</span>}
-          />
+          <CustomizedSnackbars onRef={actualChild => (this.actualChild = actualChild)} />
         </DivAddHero>
       </React.Fragment>
     );
