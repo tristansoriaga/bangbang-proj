@@ -66,7 +66,7 @@ const HeroList = props => {
           >
             <DivHeroBox>
               <DivHeroImage>
-                <HeroImage src={val.image} alt={val.name} />
+                <HeroImage src={val.profile_image} alt={val.name} />
               </DivHeroImage>
               <HeroCaption className="hero-caption">
                 <h2>{_.capitalize(val.name)}</h2>

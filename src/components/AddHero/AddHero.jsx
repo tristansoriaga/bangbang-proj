@@ -121,7 +121,6 @@ class AddHero extends Component {
             }
           });
       }
-    console.log(this.state);
   };
 
   handleAbilityPassiveChange = e => {
@@ -134,7 +133,10 @@ class AddHero extends Component {
   };
 
   handleAbilityOneChange = e => {
-    if (e.target.name === "ability_one_manacost" || e.target.name === "ability_one_cooldown") {
+    if (
+      e.target.name === "ability_one_manacost" ||
+      e.target.name === "ability_one_cooldown"
+    ) {
       this.setState({
         ability_one: {
           ...this.state.ability_one,
@@ -152,7 +154,10 @@ class AddHero extends Component {
   };
 
   handleAbilityTwoChange = e => {
-    if (e.target.name === "ability_two_manacost" || e.target.name === "ability_two_cooldown") {
+    if (
+      e.target.name === "ability_two_manacost" ||
+      e.target.name === "ability_two_cooldown"
+    ) {
       this.setState({
         ability_two: {
           ...this.state.ability_two,
@@ -170,7 +175,10 @@ class AddHero extends Component {
   };
 
   handleAbilityThreeChange = e => {
-    if (e.target.name === "ability_three_cooldown" || e.target.name === "ability_three_cooldown") {
+    if (
+      e.target.name === "ability_three_cooldown" ||
+      e.target.name === "ability_three_cooldown"
+    ) {
       this.setState({
         ability_three: {
           ...this.state.ability_three,
@@ -237,7 +245,6 @@ class AddHero extends Component {
       .catch(function(error) {
         console.error("Error writing document: ", error);
       });
-    console.log(this.state);
   };
 
   render() {

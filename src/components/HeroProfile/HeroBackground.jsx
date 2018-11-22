@@ -39,7 +39,7 @@ const HeroBackground = props => {
   `;
 
   const ParaStory = styled.p`
-    color: ${props => (props.theme === "dark" ? "#c6c6c6" : "black")};
+    color: ${props => (props.theme === "dark" ? "#dad8d8" : "black")};
     margin: 0;
     fontsize: 1em;
   `;
@@ -48,9 +48,13 @@ const HeroBackground = props => {
     <DivHeroBackground theme={props.state.background_image}>
       <DivMain theme={props.state.theme}>
         <ParaType>{props.state.type}</ParaType>
-        <H1Name theme={props.state.theme}>{props.state.name.toUpperCase()}</H1Name>
+        <H1Name theme={props.state.theme}>
+          {props.state.name.toUpperCase()}
+        </H1Name>
         <DivStory className="hidescroll">
-          <ParaStory theme={props.state.theme}>{props.state.background_story}</ParaStory>
+          <ParaStory theme={props.state.theme}>
+            {props.state.background_story}
+          </ParaStory>
         </DivStory>
       </DivMain>
     </DivHeroBackground>

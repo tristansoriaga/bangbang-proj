@@ -33,12 +33,12 @@ class Heroes extends Component {
       .get()
       .then(querySnapshot => {
         querySnapshot.forEach(doc => {
-          const { name, type, image } = doc.data();
+          const { name, type, profile_image } = doc.data();
           heroesList.push({
             id: doc.id,
             name: name,
             type: type,
-            image: image
+            profile_image: profile_image
           });
 
           this.setState({
