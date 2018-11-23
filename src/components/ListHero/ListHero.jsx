@@ -60,15 +60,15 @@ class ListHero extends Component {
       case "next":
         heroesdata = db
           .collection("heroes")
-          .orderBy("name")
+          .orderBy("name", "asc")
           .startAfter(this.state.lastVisible)
           .limit(5);
         break;
       case "previous":
         heroesdata = db
           .collection("heroes")
-          .orderBy("name")
-          .endBefore(this.state.lastVisible)
+          .orderBy("name", "desc")
+          .startAfter(this.state.lastVisible)
           .limit(5);
         break;
       default:
@@ -81,7 +81,7 @@ class ListHero extends Component {
     heroesdata.get().then(querySnapshot => {
       // Get the last visible document
       var lastVisible = querySnapshot.docs[querySnapshot.docs.length - 1];
-      console.log("last", lastVisible);
+      console.log("last", lastVisible.id);
       querySnapshot.forEach(doc => {
         const { name, type } = doc.data();
         heroesList.push({
@@ -96,6 +96,7 @@ class ListHero extends Component {
           lastVisible
         });
       });
+      console.log("state", this.state.lastVisible.id);
     });
   };
 
@@ -109,6 +110,24 @@ class ListHero extends Component {
 
   HandlePrevious = () => {
     this.firestore("previous");
+  };
+
+  HandleDeleteItem = id => {
+    console.log(id);
+    const db = fire.firestore();
+    db.settings({
+      timestampsInSnapshots: true
+    });
+
+    db.collection("cities")
+      .doc(id)
+      .delete()
+      .then(function() {
+        console.log("Document successfully deleted!");
+      })
+      .catch(function(error) {
+        console.error("Error removing document: ", error);
+      });
   };
 
   render() {
@@ -132,12 +151,22 @@ class ListHero extends Component {
                 <TDListHero>{val.name}</TDListHero>
                 <TDListHero>{val.type}</TDListHero>
                 <TDNBListHero>
-                  <Button id={val.id} variant="fab" color="secondary" aria-label="Edit">
+                  <Button
+                    id={"btnEdit" + val.id}
+                    variant="fab"
+                    color="secondary"
+                    aria-label="Edit"
+                  >
                     <EditIcon />
                   </Button>
                 </TDNBListHero>
                 <TDNBListHero>
-                  <Button variant="fab" aria-label="Delete">
+                  <Button
+                    id={"btnDel" + val.id}
+                    variant="fab"
+                    aria-label="Delete"
+                    onClick={() => this.HandleDeleteItem(val.id)}
+                  >
                     <DeleteIcon />
                   </Button>
                 </TDNBListHero>
