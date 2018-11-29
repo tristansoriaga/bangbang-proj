@@ -6,11 +6,21 @@ import AddInfoForm from "./AddInfoForm";
 import AddAbilityForm from "./AddAbilityForm";
 import AddSkinsForm from "./AddSkinsForm";
 import CustomizedSnackbars from "../Snackbar/Snackbar";
+import { NavLink } from "react-router-dom";
 
 const DivAddHero = styled.div`
   background-color: white;
   padding: 5em 7em;
 `;
+
+const DivSubmitCancel = styled.div`
+  display: grid;
+  grid-template-columns: auto auto auto;
+  width: 400px;
+  grid-gap: 15px;
+  margin: 0 auto;
+`;
+
 class AddHero extends Component {
   constructor(props) {
     super(props);
@@ -55,7 +65,6 @@ class AddHero extends Component {
 
   componentDidMount() {
     if (this.props.match.params.id) {
-      console.log("asd");
       const db = fire.firestore();
       db.settings({
         timestampsInSnapshots: true
@@ -291,11 +300,50 @@ class AddHero extends Component {
       });
   };
 
+  handleReset = () => {
+    this.setState({
+      open: false,
+      name: "",
+      profile_image: "",
+      background_image: "",
+      background_story: "",
+      type: "",
+      theme: "",
+      ability_passive: {
+        ability_passive_name: "",
+        ability_passive_description: "",
+        ability_passive_image: ""
+      },
+      ability_one: {
+        ability_one_name: "",
+        ability_one_description: "",
+        ability_one_image: "",
+        ability_one_manacost: 0,
+        ability_one_cooldown: 0
+      },
+      ability_two: {
+        ability_two_name: "",
+        ability_two_description: "",
+        ability_two_image: "",
+        ability_two_manacost: 0,
+        ability_two_cooldown: 0
+      },
+      ability_three: {
+        ability_three_name: "",
+        ability_three_description: "",
+        ability_three_image: "",
+        ability_three_manacost: 0,
+        ability_three_cooldown: 0
+      },
+      skins: [{ name: "", image: "" }]
+    });
+  };
+
   render() {
     return (
       <React.Fragment>
         <DivAddHero>
-          <h1 style={{ margin: 8 }}>Add Hero</h1>
+          <h1 style={{ margin: 8 }}>{this.props.match.params.id ? "Edit Hero" : "Add Hero"}</h1>
           <form onSubmit={this.handleSubmit}>
             <AddInfoForm
               state={this.state}
@@ -319,18 +367,25 @@ class AddHero extends Component {
               onHandleSkinUpload={this.handleSkinUpload}
             />
             <hr style={{ margin: "50px 0" }} />
-            <Button
-              type="submit"
-              style={{
-                textAlign: "right",
-                margin: "0 auto",
-                display: "block"
-              }}
-              variant="contained"
-              color="secondary"
-            >
-              Submit
-            </Button>
+            <DivSubmitCancel>
+              <Button type="submit" variant="contained" color="secondary">
+                Submit
+              </Button>
+
+              <Button onClick={this.handleReset} type="reset" variant="contained" color="primary">
+                Reset
+              </Button>
+              <NavLink
+                style={{ textDecoration: "none", color: "white" }}
+                to={{
+                  pathname: `/admin/listhero/`
+                }}
+              >
+                <Button type="button" variant="contained" color="primary">
+                  List Hero
+                </Button>
+              </NavLink>
+            </DivSubmitCancel>
           </form>
         </DivAddHero>
         <CustomizedSnackbars onRef={actualChild => (this.actualChild = actualChild)} />
