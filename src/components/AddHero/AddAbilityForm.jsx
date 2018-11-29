@@ -8,7 +8,6 @@ const DivAbility = styled.div`
 `;
 
 const AddAbilityForm = props => {
-  //console.log(props.state.ability_passive.name);
   return (
     <React.Fragment>
       <DivAbility>
@@ -17,15 +16,16 @@ const AddAbilityForm = props => {
           value={props.state.ability_passive.ability_passive_name}
           onChange={props.onHandleAbilityPassiveChange}
           name="ability_passive_name"
-          label="Name"
-          style={{ margin: 8 }}
           placeholder="Name"
-          fullWidth
+          label="Name"
           margin="normal"
           variant="outlined"
+          fullWidth
           required
+          style={{ margin: 8 }}
         />
         <TextField
+          value={props.state.ability_passive.ability_passive_description}
           onChange={props.onHandleAbilityPassiveChange}
           name="ability_passive_description"
           label="Description"
@@ -37,6 +37,7 @@ const AddAbilityForm = props => {
           required
         />
         <UploadImage
+          value={props.state.ability_passive.ability_passive_image}
           style={{ margin: 8 }}
           propUploadType="ability"
           propHeroName={props.state.name.toLowerCase()}
@@ -49,6 +50,7 @@ const AddAbilityForm = props => {
       <DivAbility>
         <h2 style={{ margin: 8 }}>Ability One</h2>
         <TextField
+          value={props.state.ability_one.ability_one_name}
           onChange={props.onHandleAbilityOneChange}
           name="ability_one_name"
           label="Name"
@@ -60,6 +62,7 @@ const AddAbilityForm = props => {
           required
         />
         <TextField
+          value={props.state.ability_one.ability_one_description}
           onChange={props.onHandleAbilityOneChange}
           name="ability_one_description"
           label="Description"
@@ -72,6 +75,7 @@ const AddAbilityForm = props => {
           required
         />
         <UploadImage
+          value={props.state.ability_one.ability_one_image}
           style={{ margin: 8 }}
           propUploadType="ability"
           propHeroName={props.state.name.toLowerCase()}
@@ -81,6 +85,7 @@ const AddAbilityForm = props => {
           onHandleImageUpload={props.onHandleImageUpload}
         />
         <TextField
+          value={props.state.ability_one.ability_one_manacost}
           onChange={props.onHandleAbilityOneChange}
           name="ability_one_manacost"
           label="Mana Cost"
@@ -93,6 +98,7 @@ const AddAbilityForm = props => {
           required
         />
         <TextField
+          value={props.state.ability_one.ability_one_cooldown}
           onChange={props.onHandleAbilityOneChange}
           name="ability_one_cooldown"
           label="Cool Down"
@@ -108,6 +114,7 @@ const AddAbilityForm = props => {
       <DivAbility>
         <h2 style={{ margin: 8 }}>Ability Two</h2>
         <TextField
+          value={props.state.ability_two.ability_two_name}
           onChange={props.onHandleAbilityTwoChange}
           name="ability_two_name"
           label="Name"
@@ -119,6 +126,7 @@ const AddAbilityForm = props => {
           required
         />
         <TextField
+          value={props.state.ability_two.ability_two_description}
           onChange={props.onHandleAbilityTwoChange}
           name="ability_two_description"
           label="Description"
@@ -131,6 +139,7 @@ const AddAbilityForm = props => {
           required
         />
         <UploadImage
+          value={props.state.ability_two.ability_two_image}
           style={{ margin: 8 }}
           propUploadType="ability"
           propHeroName={props.state.name.toLowerCase()}
@@ -140,6 +149,7 @@ const AddAbilityForm = props => {
           onHandleImageUpload={props.onHandleImageUpload}
         />
         <TextField
+          value={props.state.ability_two.ability_two_manacost}
           onChange={props.onHandleAbilityTwoChange}
           name="ability_two_manacost"
           label="Mana Cost"
@@ -152,6 +162,7 @@ const AddAbilityForm = props => {
           required
         />
         <TextField
+          value={props.state.ability_two.ability_two_cooldown}
           onChange={props.onHandleAbilityTwoChange}
           name="ability_two_cooldown"
           label="Cool Down"
@@ -167,6 +178,7 @@ const AddAbilityForm = props => {
       <DivAbility>
         <h2 style={{ margin: 8 }}>Ability Three</h2>
         <TextField
+          value={props.state.ability_three.ability_three_name}
           onChange={props.onHandleAbilityThreeChange}
           name="ability_three_name"
           label="Name"
@@ -178,6 +190,7 @@ const AddAbilityForm = props => {
           required
         />
         <TextField
+          value={props.state.ability_three.ability_three_description}
           onChange={props.onHandleAbilityThreeChange}
           name="ability_three_description"
           label="Description"
@@ -190,6 +203,7 @@ const AddAbilityForm = props => {
           required
         />
         <UploadImage
+          value={props.state.ability_three.ability_three_image}
           style={{ margin: 8 }}
           propUploadType="ability"
           propHeroName={props.state.name.toLowerCase()}
@@ -199,6 +213,7 @@ const AddAbilityForm = props => {
           onHandleImageUpload={props.onHandleImageUpload}
         />
         <TextField
+          value={props.state.ability_three.ability_three_manacost}
           onChange={props.onHandleAbilityThreeChange}
           name="ability_three_manacost"
           label="Mana Cost"
@@ -211,6 +226,7 @@ const AddAbilityForm = props => {
           required
         />
         <TextField
+          value={props.state.ability_three.ability_three_cooldown}
           onChange={props.onHandleAbilityThreeChange}
           name="ability_three_cooldown"
           label="Cool Down"

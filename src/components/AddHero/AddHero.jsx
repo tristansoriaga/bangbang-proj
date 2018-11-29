@@ -14,7 +14,7 @@ const DivAddHero = styled.div`
 class AddHero extends Component {
   constructor(props) {
     super(props);
-    this.myRef = React.createRef();
+    this.actualChild = React.createRef();
   }
   state = {
     open: false,
@@ -55,7 +55,7 @@ class AddHero extends Component {
 
   componentDidMount() {
     if (this.props.match.params.id) {
-      console.log("asdf");
+      console.log("asd");
       const db = fire.firestore();
       db.settings({
         timestampsInSnapshots: true
@@ -173,6 +173,7 @@ class AddHero extends Component {
   };
 
   handleAbilityPassiveChange = e => {
+    console.log(e.target.name);
     this.setState({
       ability_passive: {
         ...this.state.ability_passive,
@@ -253,38 +254,38 @@ class AddHero extends Component {
         type: this.state.type,
         theme: this.state.theme,
         ability_passive: {
-          name: this.state.ability_passive.ability_passive_name,
-          description: this.state.ability_passive.ability_passive_description,
-          image: this.state.ability_passive.ability_passive_image
+          ability_passive_name: this.state.ability_passive.ability_passive_name,
+          ability_passive_description: this.state.ability_passive.ability_passive_description,
+          ability_passive_image: this.state.ability_passive.ability_passive_image
         },
         ability_one: {
-          name: this.state.ability_one.ability_one_name,
-          description: this.state.ability_one.ability_one_description,
-          image: this.state.ability_one.ability_one_image,
-          manacost: this.state.ability_one.ability_one_manacost,
-          cooldown: this.state.ability_one.ability_one_cooldown
+          ability_one_name: this.state.ability_one.ability_one_name,
+          ability_one_description: this.state.ability_one.ability_one_description,
+          ability_one_image: this.state.ability_one.ability_one_image,
+          ability_one_manacost: this.state.ability_one.ability_one_manacost,
+          ability_one_cooldown: this.state.ability_one.ability_one_cooldown
         },
         ability_two: {
-          name: this.state.ability_two.ability_two_name,
-          description: this.state.ability_two.ability_two_description,
-          image: this.state.ability_two.ability_two_image,
-          manacost: this.state.ability_two.ability_two_manacost,
-          cooldown: this.state.ability_two.ability_two_cooldown
+          ability_two_name: this.state.ability_two.ability_two_name,
+          ability_two_description: this.state.ability_two.ability_two_description,
+          ability_two_image: this.state.ability_two.ability_two_image,
+          ability_two_manacost: this.state.ability_two.ability_two_manacost,
+          ability_two_cooldown: this.state.ability_two.ability_two_cooldown
         },
         ability_three: {
-          name: this.state.ability_three.ability_three_name,
-          description: this.state.ability_three.ability_three_description,
-          image: this.state.ability_three.ability_three_image,
-          manacost: this.state.ability_three.ability_three_manacost,
-          cooldown: this.state.ability_three.ability_three_cooldown
+          ability_three_name: this.state.ability_three.ability_three_name,
+          ability_three_description: this.state.ability_three.ability_three_description,
+          ability_three_image: this.state.ability_three.ability_three_image,
+          ability_three_manacost: this.state.ability_three.ability_three_manacost,
+          ability_three_cooldown: this.state.ability_three.ability_three_cooldown
         },
         skins: this.state.skins
       })
-      .then(function() {
+      .then(() => {
         this.setState({ open: true, ...this.state.open });
         this.actualChild.handleClick(true);
       })
-      .catch(function(error) {
+      .catch(error => {
         console.error("Error writing document: ", error);
         this.actualChild.handleClick(false);
       });
@@ -331,8 +332,8 @@ class AddHero extends Component {
               Submit
             </Button>
           </form>
-          <CustomizedSnackbars onRef={actualChild => (this.actualChild = actualChild)} />
         </DivAddHero>
+        <CustomizedSnackbars onRef={actualChild => (this.actualChild = actualChild)} />
       </React.Fragment>
     );
   }

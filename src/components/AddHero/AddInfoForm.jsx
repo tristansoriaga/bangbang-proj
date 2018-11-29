@@ -51,7 +51,6 @@ const AddInfoForm = props => {
       />
       <TextField
         value={props.state.background_story}
-        style={{ margin: 8, paddingBottom: "20px" }}
         onChange={props.onHandleChange}
         name="background_story"
         placeholder="Background Story"
@@ -61,6 +60,7 @@ const AddInfoForm = props => {
         fullWidth
         multiline
         required
+        style={{ margin: 8, paddingBottom: "20px" }}
       />
       <TextField
         required
