@@ -18,6 +18,7 @@ const AddInfoForm = props => {
   return (
     <React.Fragment>
       <TextField
+        value={props.state.name}
         onChange={props.onHandleChange}
         name="name"
         label="Name"
@@ -29,6 +30,7 @@ const AddInfoForm = props => {
         required
       />
       <UploadImage
+        value={props.state.profile_image}
         style={{ margin: 8 }}
         propUploadType="profile_image"
         propHeroName={props.state.name.toLowerCase()}
@@ -38,6 +40,7 @@ const AddInfoForm = props => {
         onHandleImageUpload={props.onHandleImageUpload}
       />
       <UploadImage
+        value={props.state.background_image}
         style={{ margin: 8 }}
         propUploadType="background"
         propHeroName={props.state.name.toLowerCase()}
@@ -47,6 +50,7 @@ const AddInfoForm = props => {
         onHandleImageUpload={props.onHandleImageUpload}
       />
       <TextField
+        value={props.state.background_story}
         style={{ margin: 8, paddingBottom: "20px" }}
         onChange={props.onHandleChange}
         name="background_story"

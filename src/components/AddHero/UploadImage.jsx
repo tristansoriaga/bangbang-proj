@@ -64,7 +64,7 @@ class UploadImage extends Component {
 
   render() {
     const { loading, success, url } = this.state;
-    const { propLabel, propPlaceholder, propIdx, propUploadType } = this.props;
+    const { propLabel, propPlaceholder, propIdx, propUploadType, value } = this.props;
 
     return (
       <React.Fragment>
@@ -72,7 +72,7 @@ class UploadImage extends Component {
           <TextField
             ref="myInput"
             id={"txt" + propUploadType + propIdx}
-            value={url}
+            value={url || value}
             label={propLabel}
             style={{ margin: 8, width: "80%" }}
             placeholder={propPlaceholder}

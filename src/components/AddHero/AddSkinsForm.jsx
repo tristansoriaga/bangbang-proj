@@ -44,6 +44,7 @@ const AddSkinsForm = props => {
 
             <div style={{ flexGrow: 1 }}>
               <UploadImage
+                value={skin.image}
                 style={{ margin: 8 }}
                 propUploadType="skins"
                 propHeroName={props.state.name.toLowerCase()}

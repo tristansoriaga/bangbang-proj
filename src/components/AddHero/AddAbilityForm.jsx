@@ -8,11 +8,13 @@ const DivAbility = styled.div`
 `;
 
 const AddAbilityForm = props => {
+  //console.log(props.state.ability_passive.name);
   return (
     <React.Fragment>
       <DivAbility>
         <h2 style={{ margin: 8 }}>Ability Passive</h2>
         <TextField
+          value={props.state.ability_passive.ability_passive_name}
           onChange={props.onHandleAbilityPassiveChange}
           name="ability_passive_name"
           label="Name"

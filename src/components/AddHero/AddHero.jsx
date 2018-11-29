@@ -53,6 +53,49 @@ class AddHero extends Component {
     skins: [{ name: "", image: "" }]
   };
 
+  componentDidMount() {
+    if (this.props.match.params.id) {
+      console.log("asdf");
+      const db = fire.firestore();
+      db.settings({
+        timestampsInSnapshots: true
+      });
+
+      db.collection("heroes")
+        .doc(this.props.match.params.id)
+        .get()
+        .then(querySnapshot => {
+          const {
+            name,
+            profile_image,
+            background_image,
+            background_story,
+            type,
+            theme,
+            ability_passive,
+            ability_one,
+            ability_two,
+            ability_three,
+            skins
+          } = querySnapshot.data();
+          this.setState({
+            id: querySnapshot.id,
+            name,
+            profile_image,
+            background_image,
+            background_story,
+            type,
+            theme,
+            ability_passive,
+            ability_one,
+            ability_two,
+            ability_three,
+            skins
+          });
+        });
+    }
+  }
+
   /*Add skins eventhandlers*/
   handleSkinNameChange = idx => e => {
     const newskins = this.state.skins.map((skin, sidx) => {

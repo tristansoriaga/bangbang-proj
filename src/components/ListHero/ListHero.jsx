@@ -5,6 +5,7 @@ import styled from "styled-components";
 import Button from "@material-ui/core/Button";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
+import { NavLink } from "react-router-dom";
 
 const DivListHero = styled.div`
   background-color: white;
@@ -81,7 +82,7 @@ class ListHero extends Component {
     heroesdata.get().then(querySnapshot => {
       // Get the last visible document
       var lastVisible = querySnapshot.docs[querySnapshot.docs.length - 1];
-      console.log("last", lastVisible.id);
+
       querySnapshot.forEach(doc => {
         const { name, type } = doc.data();
         heroesList.push({
@@ -96,7 +97,6 @@ class ListHero extends Component {
           lastVisible
         });
       });
-      console.log("state", this.state.lastVisible.id);
     });
   };
 
@@ -112,8 +112,11 @@ class ListHero extends Component {
     this.firestore("previous");
   };
 
+  HandleEditItem = id => {
+    //console.log(id);
+  };
+
   HandleDeleteItem = id => {
-    console.log(id);
     const db = fire.firestore();
     db.settings({
       timestampsInSnapshots: true
@@ -138,6 +141,16 @@ class ListHero extends Component {
     return (
       <DivListHero>
         <h1 style={{ margin: 8 }}>List Heroes</h1>
+        <NavLink
+          style={{ textDecoration: "none", color: "white" }}
+          to={{
+            pathname: `/addhero/`
+          }}
+        >
+          <Button variant="contained" color="secondary" aria-label="Add">
+            Add Hero
+          </Button>
+        </NavLink>
         <TableListHero>
           <tbody>
             <tr>
@@ -151,14 +164,18 @@ class ListHero extends Component {
                 <TDListHero>{val.name}</TDListHero>
                 <TDListHero>{val.type}</TDListHero>
                 <TDNBListHero>
-                  <Button
-                    id={"btnEdit" + val.id}
-                    variant="fab"
-                    color="secondary"
-                    aria-label="Edit"
+                  <NavLink
+                    style={{ textDecoration: "none", color: "white" }}
+                    to={{
+                      pathname: `/edithero/${val.name}`,
+                      heroid: val.id,
+                      heroname: val.name
+                    }}
                   >
-                    <EditIcon />
-                  </Button>
+                    <Button id={"btnEdit" + val.id} variant="fab" color="secondary" aria-label="Edit">
+                      <EditIcon />
+                    </Button>
+                  </NavLink>
                 </TDNBListHero>
                 <TDNBListHero>
                   <Button
