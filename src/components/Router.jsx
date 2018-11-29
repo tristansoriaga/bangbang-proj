@@ -8,11 +8,11 @@ import ListHero from "./ListHero/ListHero";
 const Router = () => (
   <BrowserRouter>
     <Switch>
-      <Route exact path="/heroes" component={Heroes} />
+      <Route exact path="/" component={Heroes} />
       <Route exact path="/hero/:name" component={HeroProfile} />
-      <Route exact path="/listhero" component={ListHero} />
-      <Route exact path="/addhero" component={AddHero} />
-      <Route exact path="/edithero/:id" component={AddHero} />
+      <Route exact path="/admin/listhero" component={ListHero} />
+      <Route exact path="/admin/addhero" component={AddHero} />
+      <Route exact path="/admin/edithero/:id" component={AddHero} />
     </Switch>
   </BrowserRouter>
 );

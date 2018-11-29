@@ -79,10 +79,10 @@ class HeroProfile extends Component {
             <HeroBackground state={this.state} />
 
             <DivContentAbility>
-              <HeroSkills ability_num="passive" ability={this.state.ability_passive} />
-              <HeroSkills ability_num="1" ability={this.state.ability_one} />
-              <HeroSkills ability_num="2" ability={this.state.ability_two} />
-              <HeroSkills ability_num="3" ability={this.state.ability_three} />
+              <HeroSkills ability_type="passive" ability_num="ability_passive" ability={this.state.ability_passive} />
+              <HeroSkills ability_type="1" ability_num="ability_one" ability={this.state.ability_one} />
+              <HeroSkills ability_type="2" ability_num="ability_two" ability={this.state.ability_two} />
+              <HeroSkills ability_type="3" ability_num="ability_three" ability={this.state.ability_three} />
             </DivContentAbility>
 
             <DivContentSkins>

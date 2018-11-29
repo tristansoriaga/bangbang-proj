@@ -144,7 +144,7 @@ class ListHero extends Component {
         <NavLink
           style={{ textDecoration: "none", color: "white" }}
           to={{
-            pathname: `/addhero/`
+            pathname: `/admin/addhero/`
           }}
         >
           <Button variant="contained" color="secondary" aria-label="Add">
@@ -167,7 +167,7 @@ class ListHero extends Component {
                   <NavLink
                     style={{ textDecoration: "none", color: "white" }}
                     to={{
-                      pathname: `/edithero/${val.name}`,
+                      pathname: `/admin/edithero/${val.name}`,
                       heroid: val.id,
                       heroname: val.name
                     }}
